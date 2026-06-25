@@ -72,7 +72,6 @@
     position: relative;
   }
 
-  /* ===== TOP NAVIGATION (pill bar) ===== */
   .top-nav {
     position: absolute;
     top: 18px;
@@ -128,7 +127,6 @@
     to { transform: rotate(360deg); }
   }
 
-  /* ===== HERO OVERLAY ===== */
   .hero-overlay {
     position: absolute;
     top: 0; left: 0; right: 0;
@@ -173,7 +171,6 @@
     display: inline-block;
   }
 
-  /* ===== CLICK HINT ===== */
   .click-hint {
     margin-top: 26px;
     display: inline-flex;
@@ -213,7 +210,6 @@
     letter-spacing: 0.01em;
   }
 
-  /* ===== COUNTER ===== */
   .counter {
     position: fixed;
     top: 16px;
@@ -239,7 +235,6 @@
     margin: 0 2px;
   }
 
-  /* ===== FLOATING SITE NAV ===== */
   .site-nav {
     position: fixed;
     top: 14px;
@@ -285,7 +280,6 @@
     font-weight: 700;
   }
 
-  /* ===== CORNER ANNOTATIONS ===== */
   .annotation {
     position: absolute;
     font-family: 'Caveat', cursive;
@@ -305,7 +299,6 @@
     padding: 0 2px;
   }
 
-  /* ===== SCENE ===== */
   .scene {
     position: relative;
     width: 100%;
@@ -329,11 +322,10 @@
   .scene .station,
   .scene .train-container,
   .scene .skater-container,
-  .scene .boombox {
+  .scene .space-probe {
     filter: drop-shadow(0 8px 18px rgba(12, 10, 38, 0.55));
   }
 
-  /* Rocket movement */
   .train-container {
     position: absolute;
     bottom: 30%;
@@ -352,7 +344,6 @@
     100% { transform: translateX(calc(100vw + 50px)); }
   }
 
-  /* ===== STAR FIELD ===== */
   .daisy-field {
     position: absolute;
     bottom: 0;
@@ -408,7 +399,6 @@
     100% { opacity: 0; transform: scale(1.5) translate(var(--dx), var(--dy)); }
   }
 
-  /* ===== BLUE CAT ===== */
   .cat-container {
     position: absolute;
     bottom: 6%;
@@ -436,7 +426,6 @@
     100% { transform: translateX(-150px); }
   }
 
-  /* ===== MESSAGE CARD ===== */
   .overlay {
     position: fixed;
     inset: 0;
@@ -531,7 +520,6 @@
   .btn-ghost { background: transparent; color: #ffffff; border-color: rgba(255, 255, 255, 0.4); }
   .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
 
-  /* ===== AMBIENT STARS ===== */
   .stars { position: absolute; top: 0; left: 0; width: 100%; height: 60%; pointer-events: none; z-index: 1; }
   .star {
     position: absolute;
@@ -547,7 +535,6 @@
     50% { opacity: 0.95; transform: scale(1.1); }
   }
 
-  /* ===== FLOATING MUSIC NOTES ===== */
   .note {
     position: absolute;
     font-family: 'Inter', sans-serif;
@@ -564,7 +551,7 @@
     100% { opacity: 0; transform: translate(var(--drift, 30px), -180px) rotate(15deg) scale(1.1); }
   }
 
-  /* ===== SATELLITE ===== */
+  /* ===== MINT CAT SKATER ===== */
   .skater-container {
     position: absolute;
     bottom: auto;
@@ -591,31 +578,34 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-8px); }
   }
-  .skateboard-wheel { animation: wheelSpin 0.4s linear infinite; transform-origin: center; transform-box: fill-box; }
-  @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .mint-cat-tail { animation: tailWag 1.4s ease-in-out infinite; transform-origin: 35% 70%; }
 
-  /* ===== BOOMBOX ===== */
-  .boombox {
+  /* ===== SPACE PROBE (replaces boombox) ===== */
+  .space-probe {
     position: absolute;
     bottom: 3%;
     right: 12%;
-    width: 70px;
+    width: 80px;
     z-index: 3;
-    animation: boomboxBounce 0.6s ease-in-out infinite;
-    transform-origin: bottom center;
+    animation: probeBob 3.5s ease-in-out infinite;
+    transform-origin: center;
   }
-  .boombox svg { width: 100%; height: auto; display: block; }
-  @keyframes boomboxBounce {
-    0%, 100% { transform: scale(1, 1); }
-    50% { transform: scale(1.04, 0.96); }
+  .space-probe svg { width: 100%; height: auto; display: block; }
+  @keyframes probeBob {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-6px) rotate(1deg); }
   }
-  .speaker { animation: speakerPulse 0.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
-  @keyframes speakerPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.12); }
+  .probe-dish { animation: dishScan 4s ease-in-out infinite; transform-origin: 50% 85%; }
+  @keyframes dishScan {
+    0%, 100% { transform: rotate(-12deg); }
+    50% { transform: rotate(12deg); }
+  }
+  .probe-blink { animation: blinkLight 1.2s ease-in-out infinite; }
+  @keyframes blinkLight {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.15; }
   }
 
-  /* ===== MUSIC CARD ===== */
   .music-card {
     margin: 0 auto;
     max-width: 460px;
@@ -636,7 +626,6 @@
   }
   .music-card iframe { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; }
 
-  /* ===== DARK CONTENT SECTION ===== */
   .content-section { background: var(--space); color: #ffffff; padding: 80px 24px 80px; position: relative; }
   .content-wrapper { max-width: 920px; margin: 0 auto; }
   .section-label {
@@ -702,7 +691,6 @@
     .content-grid { grid-template-columns: 1fr; gap: 32px; }
   }
 
-  /* ===== WELCOME SECTION ===== */
   .welcome-section {
     background: linear-gradient(180deg, #1c1648 0%, #1f1a4a 25%, #241f5e 55%, #2c2068 78%, #1a1640 94%, var(--space) 100%);
     padding: 110px 28px 80px;
@@ -761,7 +749,6 @@
     font-style: normal !important;
   }
 
-  /* ===== PLANT SECTION — CONSTELLATION GAME ===== */
   .plant-section {
     background: var(--space-deep);
     padding: 100px 24px 90px;
@@ -799,7 +786,6 @@
     margin: 0 auto;
   }
 
-  /* ===== CONSTELLATION GAME CANVAS ===== */
   .constellation-wrap {
     position: relative;
     width: 100%;
@@ -846,7 +832,6 @@
   }
   .constellation-reset:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
 
-  /* Congratulatory overlay */
   .congrats-overlay {
     position: fixed;
     inset: 0;
@@ -923,7 +908,6 @@
   }
   .congrats-close:hover { background: var(--gold-bright); transform: translateY(-2px); }
 
-  /* Burst particles for congrats */
   .burst-particle {
     position: absolute;
     width: 6px;
@@ -937,7 +921,6 @@
     100% { opacity: 0; transform: translate(var(--bx), var(--by)) scale(0.3); }
   }
 
-  /* ===== STATION (Observatory) ===== */
   .station {
     position: absolute;
     bottom: 28%;
@@ -947,7 +930,6 @@
   }
   .station svg { width: 100%; height: auto; display: block; }
 
-  /* ===== FOOTER ===== */
   .footer { background: var(--space-deep); padding: 0; border-top: none; position: relative; overflow: hidden; }
   .footer-landscape { width: 100%; height: 200px; display: block; background: var(--space-mid); line-height: 0; }
   .footer-landscape svg { width: 100%; height: 100%; display: block; }
@@ -957,12 +939,11 @@
   .footer-finale .footer-divider { width: 60px; height: 2px; background: var(--gold); margin: 16px auto; border-radius: 999px; }
   .footer-finale .footer-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); font-weight: 500; }
 
-  /* ===== RESPONSIVE ===== */
   @media (max-width: 700px) {
     .station { width: 180px; left: 2%; }
     .cat-container { width: 90px; }
     .skater-container { width: 60px; }
-    .boombox { width: 50px; right: 8%; }
+    .space-probe { width: 55px; right: 8%; }
     .train-container { width: 130px; }
     .counter { top: 12px; left: 12px; padding: 6px 12px; font-size: 1rem; }
     .scene { height: 70vh; min-height: 520px; }
@@ -976,7 +957,6 @@
     .welcome-signature { font-size: 1.35rem !important; }
   }
 
-  /* Star field in welcome section */
   .welcome-star-bg {
     position: absolute;
     inset: 0;
@@ -985,7 +965,6 @@
     overflow: hidden;
   }
 
-  /* Grass strands (hidden by CSS from scene) */
   .grass-strands {
     position: absolute;
     bottom: 0;
@@ -1036,7 +1015,7 @@
 <section class="welcome-section" id="letter">
   <div class="welcome-star-bg" id="welcome-star-bg"></div>
   <div class="welcome-content">
-    <span class="welcome-pill"><span class="pill-icon">✦</span> a letter, for our 4th year</span>
+    <span class="welcome-pill"><span class="pill-icon">✦</span> a short letter, for our 4th year</span>
 
     <h1 class="welcome-title">
       a small galaxy,<br>
@@ -1044,10 +1023,11 @@
     </h1>
 
     <div class="welcome-body">
+      <p>Hiiiiiiiiiiiii. I've been so coped up with work (maaf corporate slave) so the least I could do is to make this for you..</p>
 
-      <p>Four years ago, I didn't know loving someone could feel this fun! SOOOO I decided to.. make: <em>twenty-five stars, and twenty-five little notes</em> — small things, all saying the same thing in different ways.</p>
+      <p>Four years ago, I didn't know loving someone could feel fun! Kayak.. It's just so easy loving you. Being with you is just like coming back home from a really tiring day, I don't know how to show it to you soooo I make...: <em>twenty-five stars, and twenty-five little notes</em></p>
 
-      <p class="welcome-signature">— with all of me, four years in.</p>
+      <p class="welcome-signature">— with all of me, four years in, Mera.</p>
     </div>
   </div>
 </section>
@@ -1083,13 +1063,13 @@
     </h1>
     <div class="click-hint" aria-hidden="true">
       <span class="click-hint-arrow">↓</span>
-      <span class="click-hint-text">tap each star — every one is hiding a small message</span>
+      <span class="click-hint-text">tap each star! every one is hiding a small message :p</span>
     </div>
   </div>
 
   <!-- Corner annotations -->
-  <div class="annotation annot-tl">I love<span class="underline">you!</span></div>
-  <div class="annotation annot-tr">four years, <span class="underline">infinite more</span></div>
+  <div class="annotation annot-tl">I love <span class="underline">you</span></div>
+  <div class="annotation annot-tr">4 years, <span class="underline">infinite moreeee!!</span></div>
 
   <!-- Ambient stars -->
   <div class="stars" id="stars"></div>
@@ -1097,21 +1077,12 @@
   <!-- Galaxy Observatory Station -->
   <div class="station">
     <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-      <!-- Ground platform -->
       <rect x="0" y="155" width="280" height="18" fill="#3a3268"/>
       <rect x="0" y="153" width="280" height="3" fill="#2a2454"/>
-
-      <!-- Main observatory building -->
       <rect x="55" y="80" width="115" height="78" fill="#1e1a48" stroke="#6a5aaa" stroke-width="1.5"/>
-      <!-- Side wing left -->
       <rect x="25" y="100" width="34" height="58" fill="#1a1640" stroke="#5a4a9a" stroke-width="1"/>
-      <!-- Side wing right -->
       <rect x="166" y="100" width="34" height="58" fill="#1a1640" stroke="#5a4a9a" stroke-width="1"/>
-
-      <!-- Dome base ring -->
       <rect x="70" y="72" width="86" height="12" rx="3" fill="#2d2870" stroke="#7a6aba" stroke-width="1.2"/>
-
-      <!-- Observatory dome -->
       <defs>
         <radialGradient id="dome-grad" cx="42%" cy="35%" r="65%">
           <stop offset="0%" stop-color="#6a60c4"/>
@@ -1125,21 +1096,12 @@
       </defs>
       <ellipse cx="113" cy="73" rx="43" ry="42" fill="url(#dome-grad)" stroke="#7a6aba" stroke-width="1.5"/>
       <ellipse cx="113" cy="73" rx="43" ry="42" fill="url(#dome-glow)"/>
-
-      <!-- Dome slit (open for telescope) -->
       <path d="M 113 31 L 113 72 L 127 72 L 127 35 Q 120 30, 113 31 Z" fill="#080620" opacity="0.85"/>
       <line x1="113" y1="32" x2="113" y2="72" stroke="#9080d0" stroke-width="1" opacity="0.7"/>
-
-      <!-- Dome highlight -->
       <ellipse cx="97" cy="50" rx="10" ry="16" fill="#ffffff" opacity="0.06" transform="rotate(-20 97 50)"/>
-
-      <!-- Telescope barrel poking out of slit -->
       <rect x="115" y="34" width="8" height="26" rx="3" fill="#d0c8f8" stroke="#8070c0" stroke-width="0.8"/>
       <rect x="114" y="33" width="10" height="4" rx="1" fill="#b0a8e8" stroke="#6060a0" stroke-width="0.5"/>
-      <!-- Lens ring -->
       <ellipse cx="119" cy="33" rx="4.5" ry="2" fill="#ffd54a" opacity="0.8"/>
-
-      <!-- Telescope light beam -->
       <path d="M 119 33 L 90 0 L 95 0 Z" fill="url(#beam-grad)" opacity="0.35"/>
       <defs>
         <linearGradient id="beam-grad" x1="0%" y1="100%" x2="0%" y2="0%">
@@ -1147,48 +1109,31 @@
           <stop offset="100%" stop-color="#ffd54a" stop-opacity="0"/>
         </linearGradient>
       </defs>
-
-      <!-- Stars being observed (little sparkles near beam) -->
       <circle cx="92" cy="8" r="1.5" fill="#ffd54a" opacity="0.9"/>
       <circle cx="86" cy="15" r="1" fill="#fff" opacity="0.7"/>
       <circle cx="100" cy="5" r="0.8" fill="#fff" opacity="0.6"/>
       <circle cx="78" cy="20" r="1.2" fill="#ffd54a" opacity="0.5"/>
-
-      <!-- Windows on main building -->
       <rect x="70" y="100" width="22" height="16" rx="2" fill="#3a5080" stroke="#5a70a0" stroke-width="0.8"/>
       <line x1="81" y1="100" x2="81" y2="116" stroke="#5a70a0" stroke-width="0.5"/>
       <line x1="70" y1="108" x2="92" y2="108" stroke="#5a70a0" stroke-width="0.5"/>
       <rect x="133" y="100" width="22" height="16" rx="2" fill="#3a5080" stroke="#5a70a0" stroke-width="0.8"/>
       <line x1="144" y1="100" x2="144" y2="116" stroke="#5a70a0" stroke-width="0.5"/>
       <line x1="133" y1="108" x2="155" y2="108" stroke="#5a70a0" stroke-width="0.5"/>
-
-      <!-- Door -->
       <rect x="103" y="122" width="20" height="36" rx="2" fill="#0c0a20" stroke="#5a4a9a" stroke-width="0.8"/>
-      <!-- Door arch top -->
       <path d="M 103 128 Q 103 122, 113 122 Q 123 122, 123 128" fill="#0c0a20" stroke="#5a4a9a" stroke-width="0.8"/>
       <circle cx="119" cy="140" r="1" fill="#ffd54a"/>
-
-      <!-- Side wing windows (porthole style) -->
       <circle cx="42" cy="120" r="7" fill="#2a3060" stroke="#5a4a9a" stroke-width="0.8"/>
       <circle cx="42" cy="120" r="4" fill="#3a5080"/>
       <circle cx="183" cy="120" r="7" fill="#2a3060" stroke="#5a4a9a" stroke-width="0.8"/>
       <circle cx="183" cy="120" r="4" fill="#3a5080"/>
-
-      <!-- Satellite dish on roof -->
       <line x1="35" y1="100" x2="35" y2="80" stroke="#4a4080" stroke-width="2" stroke-linecap="round"/>
       <path d="M 26 80 Q 35 68, 44 80" fill="none" stroke="#8080d0" stroke-width="2.5" stroke-linecap="round"/>
       <circle cx="35" cy="80" r="2" fill="#ffd54a"/>
-
-      <!-- Antenna on other side -->
       <line x1="200" y1="100" x2="200" y2="75" stroke="#4a4080" stroke-width="1.5" stroke-linecap="round"/>
       <circle cx="200" cy="74" r="2.5" fill="#ffd54a"/>
       <circle cx="200" cy="74" r="1" fill="#fff"/>
-
-      <!-- Observatory sign -->
       <rect x="88" y="88" width="50" height="10" rx="1.5" fill="#fff" stroke="#5a4a9a" stroke-width="0.6"/>
       <text x="113" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" font-weight="700" fill="#2a2070">GALAXY OBS.</text>
-
-      <!-- Ground accent lights -->
       <circle cx="55" cy="156" r="2.5" fill="#ffd54a" opacity="0.8"/>
       <circle cx="225" cy="156" r="2.5" fill="#ffd54a" opacity="0.8"/>
     </svg>
@@ -1210,42 +1155,25 @@
           <stop offset="100%" stop-color="#a8a0d0"/>
         </linearGradient>
       </defs>
-
-      <!-- Flame exhaust (behind rocket) -->
       <ellipse cx="28" cy="55" rx="22" ry="8" fill="url(#flame-grad)" opacity="0.9"/>
       <ellipse cx="18" cy="55" rx="14" ry="5" fill="#ff9a30" opacity="0.6"/>
       <ellipse cx="10" cy="55" rx="8" ry="3" fill="#fff5a0" opacity="0.5"/>
-
-      <!-- Main body -->
       <rect x="30" y="35" width="100" height="40" rx="8" fill="url(#body-grad)" stroke="#9080c0" stroke-width="1.2"/>
-
-      <!-- Nose cone -->
       <path d="M 130 35 Q 165 40, 168 55 Q 165 70, 130 75 Z" fill="#d8d0f8" stroke="#9080c0" stroke-width="1"/>
       <path d="M 145 40 Q 162 48, 162 55 Q 162 62, 145 68" fill="none" stroke="#a090d0" stroke-width="0.6" opacity="0.6"/>
-
-      <!-- Fins -->
       <path d="M 38 73 L 28 88 L 52 75 Z" fill="#7860c0" stroke="#5a4a9a" stroke-width="0.8"/>
       <path d="M 38 37 L 28 22 L 52 35 Z" fill="#7860c0" stroke="#5a4a9a" stroke-width="0.8"/>
-
-      <!-- Color stripe band -->
       <rect x="30" y="35" width="100" height="8" rx="4" fill="#7c6cd8" opacity="0.9"/>
       <rect x="30" y="67" width="100" height="8" rx="4" fill="#7c6cd8" opacity="0.9"/>
-
-      <!-- Porthole windows -->
       <circle cx="72" cy="55" r="10" fill="#1a1640" stroke="#a090d0" stroke-width="1.5"/>
       <circle cx="72" cy="55" r="7" fill="#2a2060"/>
       <circle cx="72" cy="55" r="4" fill="#3a3888"/>
       <ellipse cx="69" cy="52" rx="2" ry="3" fill="#7070d0" opacity="0.5"/>
-
       <circle cx="105" cy="55" r="8" fill="#1a1640" stroke="#a090d0" stroke-width="1.2"/>
       <circle cx="105" cy="55" r="5" fill="#2a2060"/>
       <ellipse cx="103" cy="53" rx="1.5" ry="2" fill="#7070d0" opacity="0.4"/>
-
-      <!-- Rocket text -->
       <text x="78" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="5.5" font-weight="700" fill="#9080d0" opacity="0.8">STARBOUND</text>
       <text x="78" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="5" font-weight="600" fill="#9080d0" opacity="0.6">VOYAGER I</text>
-
-      <!-- Engine nozzles -->
       <ellipse cx="35" cy="45" rx="5" ry="8" fill="#5a4a8a" stroke="#3a2a6a" stroke-width="0.8"/>
       <ellipse cx="35" cy="65" rx="5" ry="8" fill="#5a4a8a" stroke="#3a2a6a" stroke-width="0.8"/>
     </svg>
@@ -1257,47 +1185,31 @@
   <!-- Star field (clickable) -->
   <div class="daisy-field" id="daisyField"></div>
 
-  <!-- Blue Cat -->
+  <!-- Blue Cat (ground walker) -->
   <div class="cat-container">
     <svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="65" cy="100" rx="42" ry="4" fill="rgba(0,0,0,0.18)"/>
       <g class="cat-body">
-        <!-- Tail -->
         <path class="cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#4a8ec8" stroke-width="11" stroke-linecap="round" fill="none"/>
         <path class="cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#2a5e9a" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4"/>
-
-        <!-- Body -->
         <ellipse cx="68" cy="75" rx="42" ry="28" fill="#4a90d0"/>
         <ellipse cx="68" cy="80" rx="34" ry="20" fill="#6ab8f0" opacity="0.4"/>
-
-        <!-- Belly markings -->
         <ellipse cx="68" cy="78" rx="22" ry="14" fill="#82caf5" opacity="0.55"/>
-
-        <!-- Body detail lines -->
         <path d="M 45 60 Q 50 55, 55 60" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
         <path d="M 70 58 Q 75 53, 80 58" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
         <path d="M 90 65 Q 95 60, 100 65" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
-
-        <!-- Paws -->
         <ellipse cx="50" cy="98" rx="7" ry="6" fill="#4a90d0"/>
         <ellipse cx="68" cy="100" rx="7" ry="6" fill="#4a90d0"/>
         <ellipse cx="86" cy="98" rx="7" ry="6" fill="#4a90d0"/>
         <ellipse cx="50" cy="100" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
         <ellipse cx="68" cy="102" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
         <ellipse cx="86" cy="100" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
-
-        <!-- Head -->
         <circle cx="95" cy="52" r="24" fill="#4a90d0"/>
         <circle cx="95" cy="52" r="22" fill="#5aaae8" opacity="0.6"/>
-
-        <!-- Ears -->
         <path d="M 82 32 L 75 18 L 90 28 Z" fill="#4a90d0" stroke="#2a6aaa" stroke-width="1"/>
         <path d="M 108 32 L 115 18 L 100 28 Z" fill="#4a90d0" stroke="#2a6aaa" stroke-width="1"/>
         <path d="M 83 30 L 78 22 L 88 29 Z" fill="#82caf5"/>
         <path d="M 107 30 L 112 22 L 102 29 Z" fill="#82caf5"/>
-
-        <!-- Face -->
-        <!-- Eyes (bright teal) -->
         <ellipse cx="87" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
         <ellipse cx="103" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
         <circle cx="87" cy="51" r="3.5" fill="#20c070"/>
@@ -1306,95 +1218,144 @@
         <circle cx="103" cy="51" r="2" fill="#0a1a10"/>
         <circle cx="88.5" cy="49.5" r="0.9" fill="#ffffff"/>
         <circle cx="104.5" cy="49.5" r="0.9" fill="#ffffff"/>
-
-        <!-- Nose -->
         <path d="M 94 57 L 96 57 L 95 59 Z" fill="#1a70c0"/>
-
-        <!-- Whiskers -->
         <line x1="72" y1="57" x2="90" y2="58" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
         <line x1="72" y1="60" x2="90" y2="60" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
         <line x1="100" y1="58" x2="118" y2="57" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
         <line x1="100" y1="60" x2="118" y2="60" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
-
-        <!-- Mouth -->
         <path d="M 95 59 Q 93 63, 91 61" stroke="#1a50a0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <path d="M 95 59 Q 97 63, 99 61" stroke="#1a50a0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-
-        <!-- Cheeks -->
         <ellipse cx="85" cy="58" rx="5" ry="3" fill="#7ab8e8" opacity="0.4"/>
         <ellipse cx="104" cy="58" rx="5" ry="3" fill="#7ab8e8" opacity="0.4"/>
       </g>
     </svg>
   </div>
 
-  <!-- Satellite character -->
+  <!-- MINT GREEN CAT (floating, replaces skater) -->
   <div class="skater-container">
-    <svg viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="45" cy="125" rx="28" ry="2.5" fill="rgba(0,0,0,0.18)"/>
+    <svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="65" cy="103" rx="36" ry="3" fill="rgba(0,0,0,0.15)"/>
       <g class="skater-body">
-        <rect x="18" y="115" width="54" height="5" rx="2" fill="#3a2e5e"/>
-        <rect x="18" y="115" width="54" height="2" rx="1" fill="#5e4a96"/>
-        <circle class="skateboard-wheel" cx="26" cy="122" r="3" fill="#fff8c8" stroke="#2e2350" stroke-width="0.8"/>
-        <circle class="skateboard-wheel" cx="64" cy="122" r="3" fill="#fff8c8" stroke="#2e2350" stroke-width="0.8"/>
-        <circle cx="26" cy="122" r="0.8" fill="#2e2350"/>
-        <circle cx="64" cy="122" r="0.8" fill="#2e2350"/>
-        <rect x="36" y="80" width="7" height="38" rx="2" fill="#5e6bb1"/>
-        <rect x="46" y="80" width="7" height="38" rx="2" fill="#5e6bb1"/>
-        <rect x="36" y="112" width="7" height="4" fill="#475290"/>
-        <rect x="46" y="112" width="7" height="4" fill="#475290"/>
-        <ellipse cx="39.5" cy="116" rx="6" ry="2.5" fill="#fff"/>
-        <ellipse cx="49.5" cy="116" rx="6" ry="2.5" fill="#fff"/>
-        <path d="M 28 55 Q 28 50, 33 48 L 56 48 Q 61 50, 61 55 L 62 74 L 26 74 Z" fill="#3eb5c8"/>
-        <path d="M 28 55 Q 28 50, 33 48 L 44 48 L 44 74 L 26 74 Z" fill="rgba(0,0,0,0.10)"/>
-        <path d="M 26 74 L 62 74 L 63 82 Q 63 86, 59 86 L 30 86 Q 26 86, 26 82 Z" fill="#f0e0c4"/>
-        <rect x="26" y="73" width="37" height="1.5" fill="#ffffff"/>
-        <rect x="43" y="48" width="2.2" height="26" fill="#ffd54a"/>
-        <rect x="43" y="74" width="2.2" height="12" fill="#e8b820"/>
-        <path d="M 33 48 L 56 48 L 54 53 L 35 53 Z" fill="#2f8f9f"/>
-        <rect x="22" y="55" width="7" height="28" rx="3" fill="#3eb5c8"/>
-        <rect x="22" y="58" width="7" height="3.5" fill="#ffd54a"/>
-        <rect x="60" y="55" width="7" height="28" rx="3" fill="#3eb5c8"/>
-        <rect x="60" y="58" width="7" height="3.5" fill="#ffd54a"/>
-        <circle cx="25.5" cy="84" r="3.5" fill="#f4c8a0"/>
-        <circle cx="63.5" cy="84" r="3.5" fill="#f4c8a0"/>
-        <circle cx="44" cy="36" r="14" fill="#f4c8a0"/>
-        <path d="M 30 32 Q 30 22, 44 20 Q 58 22, 58 32 L 58 40 Q 56 36, 52 35 L 36 35 Q 32 36, 30 40 Z" fill="#6b4423"/>
-        <path d="M 30 35 Q 28 42, 30 48" fill="none" stroke="#6b4423" stroke-width="3" stroke-linecap="round"/>
-        <path d="M 33 26 Q 38 22, 44 24 Q 50 22, 55 26 Q 50 28, 44 27 Q 38 28, 33 26 Z" fill="#6b4423"/>
-        <path d="M 28 38 Q 28 18, 44 16 Q 60 18, 60 38" stroke="#2a2a2a" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <ellipse cx="28" cy="40" rx="5" ry="6.5" fill="#2a2a2a"/>
-        <ellipse cx="60" cy="40" rx="5" ry="6.5" fill="#2a2a2a"/>
-        <ellipse cx="28" cy="40" rx="3.5" ry="5" fill="#3a3a3a"/>
-        <ellipse cx="60" cy="40" rx="3.5" ry="5" fill="#3a3a3a"/>
-        <circle cx="40" cy="38" r="1" fill="#3a2418"/>
-        <circle cx="48" cy="38" r="1" fill="#3a2418"/>
-        <ellipse cx="38" cy="42" rx="2" ry="1.2" fill="#ffb0a5" opacity="0.6"/>
-        <ellipse cx="50" cy="42" rx="2" ry="1.2" fill="#ffb0a5" opacity="0.6"/>
-        <path d="M 41 43 Q 44 45, 47 43" stroke="#3a2418" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <!-- Tail -->
+        <path class="mint-cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#4ad4a0" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <path class="mint-cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#2aaa78" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4"/>
+        <!-- Body -->
+        <ellipse cx="68" cy="75" rx="42" ry="28" fill="#4ad4a0"/>
+        <ellipse cx="68" cy="80" rx="34" ry="20" fill="#78ecc4" opacity="0.4"/>
+        <!-- Belly -->
+        <ellipse cx="68" cy="78" rx="22" ry="14" fill="#a0f0d8" opacity="0.55"/>
+        <!-- Body markings -->
+        <path d="M 45 60 Q 50 55, 55 60" stroke="#2aaa78" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 70 58 Q 75 53, 80 58" stroke="#2aaa78" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 90 65 Q 95 60, 100 65" stroke="#2aaa78" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <!-- Paws -->
+        <ellipse cx="50" cy="98" rx="7" ry="6" fill="#4ad4a0"/>
+        <ellipse cx="68" cy="100" rx="7" ry="6" fill="#4ad4a0"/>
+        <ellipse cx="86" cy="98" rx="7" ry="6" fill="#4ad4a0"/>
+        <ellipse cx="50" cy="100" rx="5" ry="3" fill="#a0f0d8" opacity="0.7"/>
+        <ellipse cx="68" cy="102" rx="5" ry="3" fill="#a0f0d8" opacity="0.7"/>
+        <ellipse cx="86" cy="100" rx="5" ry="3" fill="#a0f0d8" opacity="0.7"/>
+        <!-- Head -->
+        <circle cx="95" cy="52" r="24" fill="#4ad4a0"/>
+        <circle cx="95" cy="52" r="22" fill="#6ee8bc" opacity="0.6"/>
+        <!-- Ears -->
+        <path d="M 82 32 L 75 18 L 90 28 Z" fill="#4ad4a0" stroke="#2aaa78" stroke-width="1"/>
+        <path d="M 108 32 L 115 18 L 100 28 Z" fill="#4ad4a0" stroke="#2aaa78" stroke-width="1"/>
+        <path d="M 83 30 L 78 22 L 88 29 Z" fill="#a0f0d8"/>
+        <path d="M 107 30 L 112 22 L 102 29 Z" fill="#a0f0d8"/>
+        <!-- Eyes (warm amber) -->
+        <ellipse cx="87" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
+        <ellipse cx="103" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
+        <circle cx="87" cy="51" r="3.5" fill="#e8a020"/>
+        <circle cx="103" cy="51" r="3.5" fill="#e8a020"/>
+        <circle cx="87" cy="51" r="2" fill="#1a0a00"/>
+        <circle cx="103" cy="51" r="2" fill="#1a0a00"/>
+        <circle cx="88.5" cy="49.5" r="0.9" fill="#ffffff"/>
+        <circle cx="104.5" cy="49.5" r="0.9" fill="#ffffff"/>
+        <!-- Nose -->
+        <path d="M 94 57 L 96 57 L 95 59 Z" fill="#1a8060"/>
+        <!-- Whiskers -->
+        <line x1="72" y1="57" x2="90" y2="58" stroke="#1a8060" stroke-width="0.8" opacity="0.7"/>
+        <line x1="72" y1="60" x2="90" y2="60" stroke="#1a8060" stroke-width="0.8" opacity="0.7"/>
+        <line x1="100" y1="58" x2="118" y2="57" stroke="#1a8060" stroke-width="0.8" opacity="0.7"/>
+        <line x1="100" y1="60" x2="118" y2="60" stroke="#1a8060" stroke-width="0.8" opacity="0.7"/>
+        <!-- Mouth -->
+        <path d="M 95 59 Q 93 63, 91 61" stroke="#1a6050" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M 95 59 Q 97 63, 99 61" stroke="#1a6050" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <!-- Cheeks -->
+        <ellipse cx="85" cy="58" rx="5" ry="3" fill="#78ecc4" opacity="0.5"/>
+        <ellipse cx="104" cy="58" rx="5" ry="3" fill="#78ecc4" opacity="0.5"/>
+        <!-- Small star on forehead -->
+        <path d="M 95 36 L 96.2 39.6 L 100 39.6 L 97 41.9 L 98.1 45.5 L 95 43.3 L 91.9 45.5 L 93 41.9 L 90 39.6 L 93.8 39.6 Z" fill="#ffd54a" opacity="0.9"/>
       </g>
     </svg>
   </div>
 
-  <!-- Boombox -->
-  <div class="boombox">
-    <svg viewBox="0 0 70 50" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="35" cy="48" rx="28" ry="2" fill="rgba(0,0,0,0.18)"/>
-      <path d="M 22 12 Q 22 6, 35 6 Q 48 6, 48 12" stroke="#2e2350" stroke-width="2" fill="none"/>
-      <rect x="6" y="12" width="58" height="34" rx="4" fill="#ffd54a" stroke="#c49a18" stroke-width="1.2"/>
-      <rect x="6" y="12" width="58" height="6" fill="#f0b830"/>
-      <rect x="6" y="42" width="58" height="4" fill="#c49a18"/>
-      <circle class="speaker" cx="18" cy="30" r="9" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="0.8"/>
-      <circle cx="18" cy="30" r="6" fill="#3a3a3a"/>
-      <circle cx="18" cy="30" r="3" fill="#5a5a5a"/>
-      <circle cx="18" cy="30" r="1.2" fill="#2a2a2a"/>
-      <circle class="speaker" cx="52" cy="30" r="9" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="0.8"/>
-      <circle cx="52" cy="30" r="6" fill="#3a3a3a"/>
-      <circle cx="52" cy="30" r="3" fill="#5a5a5a"/>
-      <circle cx="52" cy="30" r="1.2" fill="#2a2a2a"/>
-      <rect x="29" y="22" width="12" height="8" rx="1" fill="#1a1a1a"/>
-      <rect x="30" y="23" width="10" height="2" fill="#5dc4d8"/>
-      <line x1="60" y1="12" x2="66" y2="2" stroke="#2e2350" stroke-width="1.5" stroke-linecap="round"/>
-      <circle cx="66" cy="2" r="1" fill="#2e2350"/>
+  <!-- SPACE PROBE (replaces boombox) -->
+  <div class="space-probe">
+    <svg viewBox="0 0 80 110" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shadow -->
+      <ellipse cx="40" cy="107" rx="22" ry="3" fill="rgba(0,0,0,0.2)"/>
+
+      <!-- Main probe body (hexagonal-ish) -->
+      <rect x="28" y="38" width="24" height="36" rx="4" fill="#c8d4e8" stroke="#8090b0" stroke-width="1.2"/>
+      <!-- Body panels -->
+      <rect x="28" y="38" width="24" height="8" rx="2" fill="#b0bcd4"/>
+      <rect x="28" y="62" width="24" height="6" rx="0" fill="#b0bcd4"/>
+      <!-- Thermal strips -->
+      <rect x="30" y="47" width="4" height="14" rx="1" fill="#ffd54a" opacity="0.8"/>
+      <rect x="36" y="47" width="4" height="14" rx="1" fill="#ffa040" opacity="0.7"/>
+      <rect x="42" y="47" width="4" height="14" rx="1" fill="#ffd54a" opacity="0.8"/>
+      <rect x="46" y="47" width="4" height="14" rx="1" fill="#ffa040" opacity="0.7"/>
+
+      <!-- Left solar panel arm -->
+      <rect x="2" y="52" width="24" height="3" rx="1" fill="#6a6090" stroke="#4a4070" stroke-width="0.6"/>
+      <!-- Left solar panel -->
+      <rect x="2" y="44" width="18" height="18" rx="2" fill="#2a3068" stroke="#4a5090" stroke-width="0.8"/>
+      <line x1="2" y1="50" x2="20" y2="50" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="2" y1="56" x2="20" y2="56" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="2" y1="62" x2="20" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="8" y1="44" x2="8" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="14" y1="44" x2="14" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+
+      <!-- Right solar panel arm -->
+      <rect x="54" y="52" width="24" height="3" rx="1" fill="#6a6090" stroke="#4a4070" stroke-width="0.6"/>
+      <!-- Right solar panel -->
+      <rect x="60" y="44" width="18" height="18" rx="2" fill="#2a3068" stroke="#4a5090" stroke-width="0.8"/>
+      <line x1="60" y1="50" x2="78" y2="50" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="60" y1="56" x2="78" y2="56" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="60" y1="62" x2="78" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="66" y1="44" x2="66" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+      <line x1="72" y1="44" x2="72" y2="62" stroke="#3a40a0" stroke-width="0.5"/>
+
+      <!-- Dish antenna (rotates) -->
+      <g class="probe-dish">
+        <!-- Dish arm -->
+        <line x1="40" y1="38" x2="40" y2="18" stroke="#9090c0" stroke-width="2" stroke-linecap="round"/>
+        <!-- Dish bowl -->
+        <path d="M 28 18 Q 40 8, 52 18" fill="none" stroke="#c8d4f0" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 31 18 Q 40 10, 49 18" fill="none" stroke="#a0b0e0" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        <!-- Dish center -->
+        <circle cx="40" cy="18" r="3" fill="#ffd54a" stroke="#d9a23a" stroke-width="0.8"/>
+        <!-- Signal rings -->
+        <circle cx="40" cy="18" r="7" fill="none" stroke="#ffd54a" stroke-width="0.6" opacity="0.4"/>
+        <circle cx="40" cy="18" r="11" fill="none" stroke="#ffd54a" stroke-width="0.5" opacity="0.25"/>
+      </g>
+
+      <!-- Instrument boom (bottom) -->
+      <line x1="40" y1="74" x2="40" y2="94" stroke="#8090b0" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Magnetometer at end of boom -->
+      <rect x="34" y="90" width="12" height="6" rx="2" fill="#c0c8e0" stroke="#8090b0" stroke-width="0.8"/>
+      <!-- Thruster nozzles -->
+      <rect x="28" y="70" width="6" height="6" rx="1" fill="#7070a0" stroke="#5050808" stroke-width="0.5"/>
+      <rect x="46" y="70" width="6" height="6" rx="1" fill="#7070a0" stroke="#505080" stroke-width="0.5"/>
+
+      <!-- Blinking status light -->
+      <circle class="probe-blink" cx="40" cy="42" r="2.5" fill="#00ff88" opacity="0.9"/>
+      <!-- Camera eye -->
+      <circle cx="40" cy="58" r="5" fill="#1a1a3a" stroke="#6080c0" stroke-width="1"/>
+      <circle cx="40" cy="58" r="3" fill="#2a2a6a"/>
+      <circle cx="41.2" cy="56.8" r="1" fill="#6090e0" opacity="0.7"/>
     </svg>
   </div>
 
@@ -1407,7 +1368,7 @@
   <div class="content-wrapper">
     <div class="section-label">a little note</div>
     <h2 class="content-heading">
-      this galaxy was made <span class="scribble">with care</span>. every star is <span class="underline">a small message</span> about why you are <span class="underline">irreplaceable</span>.
+      honestly? you are one of <span class="scribble">the good ones</span>. the kind of person who makes strangers feel <span class="underline">less alone</span>, and the people who love you feel <span class="underline">endlessly lucky</span>.
     </h2>
     <div class="content-grid">
       <ul class="content-list">
@@ -1442,7 +1403,7 @@
     <div class="plant-intro">
       <span class="plant-label">✦ A GAME FOR YOU</span>
       <h2 class="plant-title">connect the <em>stars</em>.</h2>
-      <p class="plant-subtitle">each star is waiting to be found. connect them in order — follow the numbered path — and together they'll form something made just for you.</p>
+      <p class="plant-subtitle">each star is waiting to be found. connect them in order.. follow the numbered path~ and together they'll form something made just for you.</p>
     </div>
 
     <p class="constellation-hint">tap the stars <span>in order (1 → 12)</span> to draw the constellation</p>
@@ -1490,9 +1451,9 @@
 <footer class="footer">
   <div class="footer-body">
     <div class="footer-finale">
-      <div class="footer-script">for you, four years and counting >< kyaa~</div>
+      <div class="footer-script">for you, four years and counting</div>
       <div class="footer-divider"></div>
-      <div class="footer-meta">dari aku yang aneh tapi anehan kamu, Mera <3</div>
+      <div class="footer-meta">made with love, Mera :3</div>
     </div>
   </div>
   <div class="footer-landscape">
@@ -1511,36 +1472,34 @@
 </footer>
 
 <script>
-// ===== 25 MESSAGES =====
 const messages = [
   "Four years in, and your presence in this world is still a priceless gift.",
   "Your smile can brighten the day of anyone who sees it, just like it did the day we met.",
   "You are stronger than you think you are.",
   "This world is a warmer place because you exist in it.",
   "There isn't a single version of you that isn't worthy of love.",
-  "You are the answer to someone's quiet prayer — you have been mine for four years.",
+  "You are the answer to someone's quiet prayer aaandd guess what!! you have been mine for four years.",
   "My days have become more meaningful since you came into them.",
   "Your kindness touches more people than you'll ever realize.",
-  "You don't have to be perfect to be loved completely. You never have.",
-  "Your voice is still one of my favorite sounds in this whole world, four years later.",
+  "You don't have to be perfect to be loved completely. Prabowo aja punya bunted jd isoke lah sayang si jelek itu aja punya istri masa km yang oke ini harus perfect banget?? km udah ok banget bagi aku.",
+  "Your antics is still one of my thing in this whole world, four years later. Tetap jadi aneh pls aku suka km apa adanya.",
   "The way you care for others makes the world more beautiful.",
   "Even on your hardest days, you are still precious.",
-  "You are living, breathing art.",
+  "You are living, breathing art. Walau kita sm sm sushidal tp km paham kan mksdku.. #damn",
   "Your laughter is my favorite music, and I never get tired of hearing it.",
-  "Nothing and no one could ever take your place in my heart — not after four years, not ever.",
+  "Nothing and no one could ever take your place in my heart; not after four years, not ever.",
   "Every single time you choose to keep going, you win.",
-  "Your presence in my life is the most beautiful coincidence I have ever lived.",
-  "You are more loved than you have ever dared to imagine.",
-  "The world would lose so much of its color without you.",
+  "Your presence in my life is the most beautiful coincidence I have ever lived. Trims nikol atas jasa blind datenya!",
+  "You are more loved than you have ever dared to imagine. Aku sayang kamu banget :3",
+  "The world would lose so much of its color without you. Jadi ayo kl mau lomfad bareng sama aku aja plissss",
   "You make ordinary things feel extraordinary.",
-  "No matter how many times you fall, you always rise again.",
-  "Your gentleness is a strength, not a weakness.",
+  "No matter how many times you fall, you always rise again. Hahayyyy",
+  "Your gentleness is a strength, not a weakness. Walau km loyo tp kita sm sm loyo jd #couplegoals cuy",
   "You are home to so many hearts, and you have always been home to mine.",
   "My best four years exist because of you.",
   "You are loved, always, unconditionally, for as many years as I have left to give. ✦"
 ];
 
-// ===== STAR SVG =====
 function daisySVG(size = 36, colorVariation = 0) {
   const centerColors = ['#ffd54a', '#ffe98a', '#fff0b0'];
   const cc = centerColors[colorVariation % centerColors.length];
@@ -1554,7 +1513,6 @@ function daisySVG(size = 36, colorVariation = 0) {
   </svg>`;
 }
 
-// ===== PLACE STARS =====
 const field = document.getElementById('daisyField');
 const DAISY_COUNT = 25;
 const foundSet = new Set();
@@ -1650,7 +1608,6 @@ document.getElementById('anotherBtn').addEventListener('click', () => {
 overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('active'); });
 
-// ===== AMBIENT STARS =====
 function placeStars() {
   const starsEl = document.getElementById('stars');
   const starGlyphs = ['✦', '✧', '⋆', '✦', '✧'];
@@ -1667,7 +1624,6 @@ function placeStars() {
   }
 }
 
-// ===== MUSIC NOTES =====
 const noteGlyphs = ['♪', '♫', '♩', '♬', '♭'];
 const noteColors = ['#ffd54a', '#ffffff', '#ffe98a', '#d8d4f0', '#ffffff'];
 
@@ -1693,7 +1649,6 @@ function ambientNotes() {
 }
 setInterval(ambientNotes, 2800);
 
-// ===== WELCOME STAR BG =====
 function buildWelcomeStars() {
   const el = document.getElementById('welcome-star-bg');
   if (!el) return;
@@ -1715,7 +1670,6 @@ function buildWelcomeStars() {
   el.appendChild(svg);
 }
 
-// ===== SITE NAV =====
 (function() {
   const nav = document.getElementById('site-nav');
   const toggle = document.getElementById('nav-toggle');
@@ -1761,7 +1715,6 @@ function buildWelcomeStars() {
   }
 })();
 
-// ===== CONSTELLATION GAME =====
 (function() {
   const canvas = document.getElementById('constellation-canvas');
   if (!canvas) return;
@@ -1771,49 +1724,31 @@ function buildWelcomeStars() {
   const congratsClose = document.getElementById('congrats-close');
   const resetBtn = document.getElementById('constellation-reset');
 
-  // Canvas logical size
   const W = 800, H = 500;
 
-  // The '4' constellation: 12 star nodes forming a clear '4' shape
-  // Path: draw the vertical left stroke top-to-bottom, then the crossbar, then the vertical right stroke top-to-bottom
-  // Node positions are normalized 0-1 for responsive scaling
   const nodes = [
-    // Left vertical stroke of '4' (nodes 0-4, top to bottom)
-    { x: 0.28, y: 0.12 },  // 1  — top-left
-    { x: 0.26, y: 0.28 },  // 2
-    { x: 0.25, y: 0.44 },  // 3
-    { x: 0.24, y: 0.58 },  // 4  — crossbar junction
-
-    // Crossbar right (nodes 4-6)
-    { x: 0.40, y: 0.58 },  // 5
-    { x: 0.55, y: 0.58 },  // 6
-    { x: 0.68, y: 0.58 },  // 7  — rightmost crossbar
-
-    // Right vertical stroke top (nodes 7-9, going up first then continuing down)
-    { x: 0.68, y: 0.42 },  // 8  — top of right stroke
-    { x: 0.67, y: 0.26 },  // 9
-    { x: 0.67, y: 0.12 },  // 10 — top right
-
-    // Right vertical stroke bottom (continuing from node 7 downward)
-    { x: 0.68, y: 0.70 },  // 11
-    { x: 0.68, y: 0.87 },  // 12 — bottom right
+    { x: 0.28, y: 0.12 },
+    { x: 0.26, y: 0.28 },
+    { x: 0.25, y: 0.44 },
+    { x: 0.24, y: 0.58 },
+    { x: 0.40, y: 0.58 },
+    { x: 0.55, y: 0.58 },
+    { x: 0.68, y: 0.58 },
+    { x: 0.68, y: 0.42 },
+    { x: 0.67, y: 0.26 },
+    { x: 0.67, y: 0.12 },
+    { x: 0.68, y: 0.70 },
+    { x: 0.68, y: 0.87 },
   ];
 
-  // Connection order — the path the user must trace, 0-indexed
-  // 0→1→2→3 (left stroke down), 3→4→5→6 (crossbar right), 6→7→8→9 (back up right stroke), 9 then jump: from node 6 we continue down: 6→10→11
-  // Simpler: just sequential 0..11
   const CONNECTION_ORDER = [0,1,2,3,4,5,6,7,8,9,6,10,11];
-  // This traces: left stroke down → crossbar → up right stroke → down right stroke
-  // Node 6 appears twice — that's the crossbar/right-stroke junction, user touches it twice
 
-  // State
-  let nextExpected = 0; // index into CONNECTION_ORDER
-  let connectedEdges = []; // array of [fromIdx, toIdx]
+  let nextExpected = 0;
+  let connectedEdges = [];
   let litNodes = new Set();
   let completed = false;
   let pulsePhase = 0;
 
-  // DPR-aware canvas
   function setupCanvas() {
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -1835,7 +1770,6 @@ function buildWelcomeStars() {
 
   function drawBackground() {
     ctx.clearRect(0, 0, dims.w, dims.h);
-    // Space gradient
     const grad = ctx.createRadialGradient(dims.w * 0.4, dims.h * 0.3, 0, dims.w * 0.5, dims.h * 0.5, dims.w * 0.8);
     grad.addColorStop(0, '#1e1850');
     grad.addColorStop(0.5, '#0f0c2a');
@@ -1843,7 +1777,6 @@ function buildWelcomeStars() {
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, dims.w, dims.h);
 
-    // Ambient background stars
     const bgStars = [
       [0.05,0.08,0.6],[0.12,0.22,0.4],[0.18,0.05,0.8],[0.33,0.18,0.5],
       [0.42,0.08,0.7],[0.52,0.20,0.4],[0.62,0.10,0.6],[0.75,0.08,0.8],
@@ -1864,7 +1797,6 @@ function buildWelcomeStars() {
     connectedEdges.forEach(([a, b], i) => {
       const pa = nodePos(nodes[a]);
       const pb = nodePos(nodes[b]);
-      // Glow pass
       ctx.save();
       ctx.beginPath();
       ctx.moveTo(pa.x, pa.y);
@@ -1873,7 +1805,6 @@ function buildWelcomeStars() {
       ctx.lineWidth = 8;
       ctx.lineCap = 'round';
       ctx.stroke();
-      // Core line
       ctx.beginPath();
       ctx.moveTo(pa.x, pa.y);
       ctx.lineTo(pb.x, pb.y);
@@ -1896,7 +1827,6 @@ function buildWelcomeStars() {
       const expectedNode = CONNECTION_ORDER[nextExpected];
       const isNext = !completed && i === expectedNode;
 
-      // Outer glow for next expected
       if (isNext) {
         ctx.save();
         const pulse = 0.55 + 0.45 * Math.sin(pulsePhase);
@@ -1911,18 +1841,15 @@ function buildWelcomeStars() {
         ctx.restore();
       }
 
-      // Star body
       ctx.save();
       drawStarShape(ctx, p.x, p.y, isLit ? 9 : 7, isLit, isNext);
       ctx.restore();
 
-      // Number label
       ctx.save();
       ctx.font = `bold ${isLit ? 10 : 9}px Inter, sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = isLit ? '#ffd54a' : 'rgba(255,255,255,0.45)';
-      // Show the step number in CONNECTION_ORDER (first occurrence, 1-indexed)
       const stepNum = orderIdx + 1;
       ctx.fillText(stepNum > 0 ? stepNum : '', p.x, p.y - 16);
       ctx.restore();
@@ -1980,7 +1907,6 @@ function buildWelcomeStars() {
     if (!completed) drawHintLabel();
   }
 
-  // Animation loop
   let raf;
   function animate() {
     pulsePhase += 0.045;
@@ -1989,7 +1915,6 @@ function buildWelcomeStars() {
   }
   animate();
 
-  // Hit test
   function hitTest(ex, ey) {
     const rect = canvas.getBoundingClientRect();
     const scaleX = dims.w / rect.width;
@@ -2011,12 +1936,9 @@ function buildWelcomeStars() {
     if (hit === -1) return;
     const expected = CONNECTION_ORDER[nextExpected];
     if (hit !== expected) {
-      // Flash wrong indication
       spawnSparklesCanvas(nodePos(nodes[hit]), '#ff5555');
       return;
     }
-
-    // Correct tap
     litNodes.add(hit);
     if (nextExpected > 0) {
       const prevNode = CONNECTION_ORDER[nextExpected - 1];
@@ -2024,7 +1946,6 @@ function buildWelcomeStars() {
     }
     spawnSparklesCanvas(nodePos(nodes[hit]), '#ffd54a');
     nextExpected++;
-
     if (nextExpected >= CONNECTION_ORDER.length) {
       completed = true;
       setTimeout(showCongrats, 700);
@@ -2032,7 +1953,6 @@ function buildWelcomeStars() {
   }
 
   function spawnSparklesCanvas(pos, color) {
-    // CSS sparkles on body
     for (let i = 0; i < 6; i++) {
       const s = document.createElement('div');
       s.className = 'sparkle';
@@ -2054,7 +1974,6 @@ function buildWelcomeStars() {
     }
   }
 
-  // Event listeners
   canvas.addEventListener('click', (e) => handleTap(e.clientX, e.clientY));
   canvas.addEventListener('touchstart', (e) => {
     e.preventDefault();
@@ -2062,12 +1981,10 @@ function buildWelcomeStars() {
     handleTap(t.clientX, t.clientY);
   }, { passive: false });
 
-  // Resize
   window.addEventListener('resize', () => {
     dims = setupCanvas();
   });
 
-  // Reset
   resetBtn.addEventListener('click', () => {
     nextExpected = 0;
     connectedEdges = [];
@@ -2075,7 +1992,6 @@ function buildWelcomeStars() {
     completed = false;
   });
 
-  // Congrats
   function showCongrats() {
     congratsOverlay.classList.add('show');
     spawnBurstParticles();
@@ -2100,7 +2016,6 @@ function buildWelcomeStars() {
       congratsInner.appendChild(p);
       setTimeout(() => p.remove(), 1600);
     }
-    // Repeat burst
     setTimeout(spawnBurstParticles, 1800);
   }
 
@@ -2109,13 +2024,11 @@ function buildWelcomeStars() {
   });
 })();
 
-// ===== INIT =====
 placeGrass();
 placeStars();
 placeDaisies();
 buildWelcomeStars();
 for (let i = 0; i < 3; i++) setTimeout(() => ambientNotes(), i * 900);
-
 </script>
 </body>
 </html>
