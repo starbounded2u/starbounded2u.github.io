@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Galaxy For You ✨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@400;600;700&family=Caveat+Brush&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #ffd54a;
+    --gold-bright: #ffe98a;
+    --gold-dark: #d9a23a;
+    --space: #1a1640;
+    --space-mid: #241f5e;
+    --space-light: #322a78;
+    --space-deep: #0c0a26;
+    --bg-cream: #16123a;
+    --bg-cream-light: #1f1a4a;
+    --bg-cream-dark: #0c0a26;
+    --sky-top: #1c1648;
+    --sky-mid: #261c5c;
+    --sky-bot: #2e2270;
+    --warm-glow: #ffd54a;
+    --nebula-back: #4a3a8a;
+    --nebula-front: #2c2068;
+    --nebula-dark: #14102e;
+    --ink: #f5f3ff;
+    --ink-soft: #d8d4f0;
+    --rose: #ff8fb0;
+    --rose-dark: #d9608a;
+    --rose-soft: #ffd0de;
+    --star-white: #ffffff;
+    --star-shadow: #cfc8f5;
+    --star-center: #ffd54a;
+    --star-center-dark: #d9a23a;
+    --tail: #8a7cd8;
+    --planet-orange: #6ab4e8;
+    --planet-orange-dark: #3a7ab8;
+    --planet-cream: #d0e8ff;
+    --planet-pink: #a0c8f0;
+    --station-red: #c44545;
+    --station-cream: #fff2d8;
+    --station-roof: #5a4a8a;
+    --ship-yellow: #ffd03e;
+    --ship-blue: #7c6cd8;
+    --text-warm: #f5f3ff;
+    --text-soft: #d8d4f0;
+    --card-bg: #1a1640;
+    --card-border: #ffd54a;
+    --star: #ffffff;
+    --note-color: #ffd54a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--bg-cream);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* ===== TOP NAVIGATION (pill bar) ===== */
+  .top-nav {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    z-index: 15;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-splat {
+    background: var(--gold);
+    color: var(--space-deep);
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 9px 16px;
+    border-radius: 50% 40% 55% 45% / 60% 50% 50% 40%;
+    box-shadow: 0 4px 16px rgba(26, 22, 64, 0.3);
+    white-space: nowrap;
+  }
+  .logo-splat .heart { color: var(--space-deep); margin-right: 4px; }
+
+  .nav-line {
+    flex: 1;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(255, 213, 74, 0.5);
+    position: relative;
+  }
+  .nav-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, var(--gold) 0 12px, transparent 12px 18px);
+    border-radius: 999px;
+    opacity: 0.5;
+  }
+
+  .sun-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    animation: sunSpin 22s linear infinite;
+    filter: drop-shadow(0 2px 12px rgba(255, 213, 74, 0.55));
+  }
+  .sun-icon svg { width: 100%; height: 100%; display: block; }
+  @keyframes sunSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ===== HERO OVERLAY ===== */
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 110px 24px 0;
+    pointer-events: none;
+    text-align: center;
+  }
+  .hero-overlay > * { pointer-events: auto; }
+
+  .hero-title {
+    margin: 0;
+    font-family: 'Caveat Brush', cursive;
+    color: var(--gold);
+    text-transform: lowercase;
+    line-height: 0.82;
+    font-weight: 400;
+    text-shadow:
+      0 4px 22px rgba(12, 10, 38, 0.55),
+      0 0 38px rgba(12, 10, 38, 0.35);
+    letter-spacing: -0.01em;
+  }
+  .hero-title .title-line {
+    display: block;
+    font-size: clamp(4.5rem, 14vw, 12rem);
+  }
+  .hero-title .title-line-2 {
+    margin-top: -6px;
+    transform: rotate(-1.5deg);
+    color: var(--gold-bright);
+  }
+
+  .hero-subtitle {
+    font-family: 'Caveat Brush', cursive;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+    text-align: center;
+    margin: 24px auto 0;
+    max-width: 640px;
+    line-height: 1.5;
+    transform: rotate(-0.8deg);
+    display: inline-block;
+  }
+
+  /* ===== CLICK HINT ===== */
+  .click-hint {
+    margin-top: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 18px 9px 16px;
+    background: rgba(12, 10, 32, 0.72);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    border: 1px solid rgba(255, 213, 74, 0.45);
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+    animation: clickHintFloat 2.6s ease-in-out infinite;
+  }
+  @keyframes clickHintFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  .click-hint-arrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gold);
+    line-height: 1;
+    animation: clickHintArrow 1.4s ease-in-out infinite;
+  }
+  @keyframes clickHintArrow {
+    0%, 100% { transform: translateY(0); opacity: 0.85; }
+    50%      { transform: translateY(3px); opacity: 1; }
+  }
+  .click-hint-text {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    color: #f8f1dc;
+    letter-spacing: 0.01em;
+  }
+
+  /* ===== COUNTER ===== */
+  .counter {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 25;
+    background: var(--space-deep);
+    border: 2px solid var(--gold);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  .counter span {
+    color: var(--gold);
+    font-weight: 800;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    margin: 0 2px;
+  }
+
+  /* ===== FLOATING SITE NAV ===== */
+  .site-nav {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+  }
+  .nav-toggle { display: none; }
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 5px 6px;
+    display: flex;
+    gap: 2px;
+    background: rgba(12, 10, 38, 0.7);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border: 1px solid rgba(255, 213, 74, 0.22);
+    border-radius: 999px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  }
+  .nav-list li { list-style: none; }
+  .nav-link {
+    display: block;
+    padding: 7px 16px;
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    border-radius: 999px;
+    transition: color 0.25s, background 0.25s, transform 0.2s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--gold-bright, #ffe98a); }
+  .nav-link.active {
+    color: var(--space-deep);
+    background: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ===== CORNER ANNOTATIONS ===== */
+  .annotation {
+    position: absolute;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    z-index: 7;
+    pointer-events: none;
+    text-shadow: 0 2px 10px rgba(12, 10, 38, 0.7), 0 0 20px rgba(12, 10, 38, 0.5);
+  }
+  .annot-tl { top: 62%; left: 4%; transform: rotate(-2deg); }
+  .annot-tr { top: 62%; right: 4%; text-align: right; transform: rotate(2deg); }
+  .annotation .underline {
+    background-image: linear-gradient(transparent 60%, var(--gold) 60%, var(--gold) 88%, transparent 88%);
+    padding: 0 2px;
+  }
+
+  /* ===== SCENE ===== */
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 720px;
+    overflow: hidden;
+    background-image:
+      linear-gradient(to bottom, rgba(12, 10, 38, 0.55) 0%, rgba(12, 10, 38, 0.25) 35%, rgba(12, 10, 38, 0.1) 60%, rgba(26, 22, 64, 0.45) 100%),
+      url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?fm=jpg&q=80&w=2400&fit=crop&auto=format');
+    background-size: cover;
+    background-position: center 35%;
+    background-repeat: no-repeat;
+  }
+
+  .scene .sun,
+  .scene .cloud,
+  .scene .hill,
+  .scene .grass-strands { display: none !important; }
+
+  .scene .cat-container,
+  .scene .station,
+  .scene .train-container,
+  .scene .skater-container,
+  .scene .boombox {
+    filter: drop-shadow(0 8px 18px rgba(12, 10, 38, 0.55));
+  }
+
+  /* Rocket movement */
+  .train-container {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+    width: 180px;
+    z-index: 1;
+    animation: trainPass 18s linear infinite;
+  }
+  .train-container svg { width: 100%; height: auto; display: block; }
+
+  @keyframes trainPass {
+    0% { transform: translateX(-220px); }
+    45% { transform: translateX(calc(100vw + 50px)); }
+    46% { transform: translateX(calc(100vw + 50px)) scaleX(-1); }
+    48% { transform: translateX(calc(100vw + 50px)) scaleX(-1); }
+    100% { transform: translateX(calc(100vw + 50px)); }
+  }
+
+  /* ===== STAR FIELD ===== */
+  .daisy-field {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 62%;
+    z-index: 3;
+  }
+
+  .daisy {
+    position: absolute;
+    cursor: pointer;
+    transform-origin: bottom center;
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+    filter: drop-shadow(0 3px 6px rgba(12, 10, 38, 0.35));
+    animation: daisySway 5s ease-in-out infinite;
+  }
+
+  .daisy:hover {
+    transform: scale(1.22) translateY(-5px);
+    z-index: 5;
+    filter: drop-shadow(0 5px 10px rgba(12, 10, 38, 0.5));
+  }
+
+  .daisy.popped { animation: pop 0.6s ease-out; }
+
+  @keyframes daisySway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+  }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.35) rotate(-6deg); }
+    70% { transform: scale(0.95) rotate(4deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  .daisy svg { display: block; }
+
+  .sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #fff5d8 0%, #d9a23a 60%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleOut 0.9s ease-out forwards;
+  }
+
+  @keyframes sparkleOut {
+    0% { opacity: 1; transform: scale(0.5) translate(0, 0); }
+    100% { opacity: 0; transform: scale(1.5) translate(var(--dx), var(--dy)); }
+  }
+
+  /* ===== BLUE CAT ===== */
+  .cat-container {
+    position: absolute;
+    bottom: 6%;
+    left: 0;
+    width: 130px;
+    z-index: 4;
+    animation: catWalk 32s linear infinite;
+  }
+  .cat-container svg { width: 100%; height: auto; display: block; }
+  .cat-body { animation: catBob 0.6s ease-in-out infinite; transform-origin: center; }
+  @keyframes catBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+  .cat-tail { animation: tailWag 1.4s ease-in-out infinite; transform-origin: 35% 70%; }
+  @keyframes tailWag {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(8deg); }
+  }
+  @keyframes catWalk {
+    0% { transform: translateX(-150px); }
+    48% { transform: translateX(calc(100vw + 30px)); }
+    50% { transform: translateX(calc(100vw + 30px)) scaleX(-1); }
+    98% { transform: translateX(-150px) scaleX(-1); }
+    100% { transform: translateX(-150px); }
+  }
+
+  /* ===== MESSAGE CARD ===== */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 10, 38, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    animation: fadeIn 0.4s ease-out;
+  }
+  .overlay.active { display: flex; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .message-card {
+    background: var(--space);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 50px 38px 32px;
+    max-width: 540px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(12, 10, 38, 0.5), 0 0 0 1px var(--space), 0 0 0 10px rgba(255, 213, 74, 0.15);
+    animation: cardIn 0.5s cubic-bezier(.34,1.56,.64,1);
+    text-align: center;
+  }
+
+  @keyframes cardIn {
+    0% { opacity: 0; transform: scale(0.7) translateY(20px) rotate(-3deg); }
+    100% { opacity: 1; transform: scale(1) translateY(0) rotate(0); }
+  }
+
+  .message-card .daisy-icon {
+    margin: -64px auto 0;
+    width: 70px;
+    height: 70px;
+    background: var(--gold);
+    border-radius: 50% 40% 55% 45% / 60% 50% 50% 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(26, 22, 64, 0.35);
+  }
+
+  .message-card .message-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-top: 22px;
+    font-weight: 600;
+  }
+
+  .message-card .message-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    line-height: 1.45;
+    color: #ffffff;
+    margin: 14px 0 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .message-card .actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 11px 24px;
+    border-radius: 999px;
+    border: 2px solid;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: all 0.18s ease;
+    background: none;
+  }
+  .btn-primary { background: var(--gold); color: var(--space-deep); border-color: var(--gold); }
+  .btn-primary:hover { background: var(--gold-bright); border-color: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255, 213, 74, 0.35); }
+  .btn-ghost { background: transparent; color: #ffffff; border-color: rgba(255, 255, 255, 0.4); }
+  .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); border-color: #ffffff; }
+
+  /* ===== AMBIENT STARS ===== */
+  .stars { position: absolute; top: 0; left: 0; width: 100%; height: 60%; pointer-events: none; z-index: 1; }
+  .star {
+    position: absolute;
+    color: var(--star);
+    font-size: 12px;
+    opacity: 0;
+    animation: twinkle 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(217, 162, 58, 0.6));
+    text-shadow: 0 0 6px #f0d8a0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 0.95; transform: scale(1.1); }
+  }
+
+  /* ===== FLOATING MUSIC NOTES ===== */
+  .note {
+    position: absolute;
+    font-family: 'Inter', sans-serif;
+    color: var(--note-color);
+    font-size: 24px;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 2px 4px rgba(196, 116, 216, 0.35));
+    animation: floatNote 6s ease-in forwards;
+  }
+  @keyframes floatNote {
+    0% { opacity: 0; transform: translate(0, 0) rotate(-8deg) scale(0.5); }
+    15% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--drift, 30px), -180px) rotate(15deg) scale(1.1); }
+  }
+
+  /* ===== SATELLITE ===== */
+  .skater-container {
+    position: absolute;
+    bottom: auto;
+    top: 22%;
+    left: 0;
+    width: 78px;
+    z-index: 5;
+    opacity: 0.92;
+    animation: skaterFloat 36s ease-in-out infinite;
+  }
+  .skater-container svg { width: 100%; height: auto; display: block; }
+  @keyframes skaterFloat {
+    0%   { transform: translate(-130px, 0) rotate(-3deg); }
+    20%  { transform: translate(20vw, -25px) rotate(2deg); }
+    40%  { transform: translate(42vw, 15px) rotate(-2deg); }
+    50%  { transform: translate(calc(60vw + 40px), -10px) rotate(3deg); }
+    50.01% { transform: translate(calc(60vw + 40px), -10px) rotate(3deg) scaleX(-1); }
+    60%  { transform: translate(50vw, 18px) rotate(-2deg) scaleX(-1); }
+    80%  { transform: translate(20vw, -22px) rotate(2deg) scaleX(-1); }
+    100% { transform: translate(-130px, 0) rotate(-3deg) scaleX(-1); }
+  }
+  .skater-body { animation: skaterDreamBob 4s ease-in-out infinite; transform-origin: center; }
+  @keyframes skaterDreamBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .skateboard-wheel { animation: wheelSpin 0.4s linear infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes wheelSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* ===== BOOMBOX ===== */
+  .boombox {
+    position: absolute;
+    bottom: 3%;
+    right: 12%;
+    width: 70px;
+    z-index: 3;
+    animation: boomboxBounce 0.6s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
+  .boombox svg { width: 100%; height: auto; display: block; }
+  @keyframes boomboxBounce {
+    0%, 100% { transform: scale(1, 1); }
+    50% { transform: scale(1.04, 0.96); }
+  }
+  .speaker { animation: speakerPulse 0.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes speakerPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+
+  /* ===== MUSIC CARD ===== */
+  .music-card {
+    margin: 0 auto;
+    max-width: 460px;
+    background: var(--space-mid);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 16px;
+  }
+  .music-card .music-label {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 12px;
+    display: block;
+    letter-spacing: 0.02em;
+  }
+  .music-card iframe { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; }
+
+  /* ===== DARK CONTENT SECTION ===== */
+  .content-section { background: var(--space); color: #ffffff; padding: 80px 24px 80px; position: relative; }
+  .content-wrapper { max-width: 920px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .section-label::before { content: '✦'; font-size: 1.2em; }
+  .content-heading {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.05;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    max-width: 740px;
+    margin-bottom: 36px;
+  }
+  .content-heading .underline {
+    background-image: linear-gradient(transparent 65%, var(--gold) 65%, var(--gold) 92%, transparent 92%);
+    padding: 0 4px;
+  }
+  .content-heading .scribble { font-family: 'Caveat', cursive; color: var(--gold); font-weight: 700; margin: 0 0.05em; }
+  .content-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; margin-top: 32px; }
+  .content-list { list-style: none; padding: 0; margin: 0; }
+  .content-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.92);
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 213, 74, 0.18);
+  }
+  .content-list li::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255, 213, 74, 0.6);
+  }
+  .content-right { display: flex; flex-direction: column; gap: 24px; }
+  .content-tagline {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    line-height: 1.15;
+    color: var(--gold);
+  }
+  .content-tagline em { font-family: 'Archivo Black', sans-serif; font-style: normal; text-transform: uppercase; color: #ffffff; font-size: 0.7em; letter-spacing: -0.01em; margin: 0 0.1em; }
+
+  @media (max-width: 700px) {
+    .content-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ===== WELCOME SECTION ===== */
+  .welcome-section {
+    background: linear-gradient(180deg, #1c1648 0%, #1f1a4a 25%, #241f5e 55%, #2c2068 78%, #1a1640 94%, var(--space) 100%);
+    padding: 110px 28px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .welcome-content { max-width: 720px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .welcome-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #f5f3ff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 213, 74, 0.3);
+    margin-bottom: 38px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  }
+  .welcome-pill .pill-icon { color: var(--gold); font-size: 1.05rem; }
+  .welcome-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    color: #f5f3ff;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 42px;
+  }
+  .welcome-title em { font-style: italic; font-weight: 300; color: var(--gold-bright); }
+  .welcome-title .title-soft { display: block; font-weight: 300; }
+  .welcome-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 350;
+    font-size: clamp(1.05rem, 1.45vw, 1.22rem);
+    color: #d8d4f0;
+    line-height: 1.65;
+    letter-spacing: 0.003em;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .welcome-body p { margin: 0 0 22px; }
+  .welcome-body p:last-of-type { margin-bottom: 0; }
+  .welcome-body em { font-style: italic; font-weight: 500; color: var(--gold-bright); }
+  .welcome-signature {
+    font-family: 'Caveat', cursive !important;
+    font-weight: 600 !important;
+    font-size: 1.55rem !important;
+    color: var(--gold-bright) !important;
+    margin-top: 34px !important;
+    letter-spacing: 0.015em;
+    font-style: normal !important;
+  }
+
+  /* ===== PLANT SECTION — CONSTELLATION GAME ===== */
+  .plant-section {
+    background: var(--space-deep);
+    padding: 100px 24px 90px;
+    position: relative;
+    border-top: 1px solid rgba(255, 213, 74, 0.12);
+  }
+  .plant-content { max-width: 860px; margin: 0 auto; }
+  .plant-intro { text-align: center; margin-bottom: 50px; }
+  .plant-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  .plant-title {
+    font-family: 'Caveat Brush', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.4rem);
+    color: var(--gold);
+    margin: 14px 0 22px;
+    line-height: 0.9;
+    text-transform: lowercase;
+    letter-spacing: -0.005em;
+  }
+  .plant-title em { color: var(--gold-bright); font-style: italic; font-weight: inherit; }
+  .plant-subtitle {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.18rem;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.45;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* ===== CONSTELLATION GAME CANVAS ===== */
+  .constellation-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 213, 74, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  #constellation-canvas {
+    display: block;
+    width: 100%;
+    cursor: crosshair;
+    background: radial-gradient(ellipse at 40% 30%, #1e1850 0%, #0f0c2a 50%, #06040f 100%);
+  }
+
+  .constellation-hint {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+  .constellation-hint span { color: var(--gold); }
+
+  .constellation-reset {
+    display: block;
+    margin: 18px auto 0;
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 8px 22px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .constellation-reset:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+  /* Congratulatory overlay */
+  .congrats-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 4, 16, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .congrats-overlay.show { opacity: 1; pointer-events: auto; }
+
+  .congrats-inner {
+    text-align: center;
+    position: relative;
+  }
+  .congrats-number {
+    font-family: 'Caveat Brush', cursive;
+    font-size: clamp(7rem, 22vw, 16rem);
+    color: var(--gold);
+    line-height: 0.85;
+    text-shadow: 0 0 80px rgba(255, 213, 74, 0.6), 0 0 30px rgba(255, 213, 74, 0.4);
+    animation: congratsNumber 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    opacity: 0;
+  }
+  @keyframes congratsNumber {
+    0% { opacity: 0; transform: scale(0.4) rotate(-8deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  }
+  .congrats-text {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    color: #ffffff;
+    margin-top: 18px;
+    opacity: 0;
+    animation: congratsText 0.8s ease 0.5s forwards;
+    line-height: 1.2;
+  }
+  @keyframes congratsText {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .congrats-sub {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gold-bright);
+    margin-top: 12px;
+    opacity: 0;
+    animation: congratsText 0.8s ease 0.9s forwards;
+  }
+  .congrats-close {
+    margin-top: 36px;
+    background: var(--gold);
+    color: var(--space-deep);
+    border: none;
+    border-radius: 999px;
+    padding: 12px 32px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    opacity: 0;
+    animation: congratsText 0.8s ease 1.2s forwards;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .congrats-close:hover { background: var(--gold-bright); transform: translateY(-2px); }
+
+  /* Burst particles for congrats */
+  .burst-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: burstOut 1.2s ease-out forwards;
+  }
+  @keyframes burstOut {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--bx), var(--by)) scale(0.3); }
+  }
+
+  /* ===== STATION (Observatory) ===== */
+  .station {
+    position: absolute;
+    bottom: 28%;
+    left: 4%;
+    width: 280px;
+    z-index: 2;
+  }
+  .station svg { width: 100%; height: auto; display: block; }
+
+  /* ===== FOOTER ===== */
+  .footer { background: var(--space-deep); padding: 0; border-top: none; position: relative; overflow: hidden; }
+  .footer-landscape { width: 100%; height: 200px; display: block; background: var(--space-mid); line-height: 0; }
+  .footer-landscape svg { width: 100%; height: 100%; display: block; }
+  .footer-body { background: var(--space-deep); padding: 56px 28px 40px; position: relative; }
+  .footer-finale { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .footer-finale .footer-script { font-family: 'Caveat', cursive; font-weight: 700; font-size: clamp(1.9rem, 3.6vw, 2.8rem); color: var(--gold); line-height: 1.15; margin-bottom: 14px; }
+  .footer-finale .footer-divider { width: 60px; height: 2px; background: var(--gold); margin: 16px auto; border-radius: 999px; }
+  .footer-finale .footer-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255, 255, 255, 0.7); font-weight: 500; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .station { width: 180px; left: 2%; }
+    .cat-container { width: 90px; }
+    .skater-container { width: 60px; }
+    .boombox { width: 50px; right: 8%; }
+    .train-container { width: 130px; }
+    .counter { top: 12px; left: 12px; padding: 6px 12px; font-size: 1rem; }
+    .scene { height: 70vh; min-height: 520px; }
+    .plant-section { padding: 70px 18px 70px; }
+  }
+
+  @media (max-width: 480px) {
+    .welcome-section { padding: 64px 18px 60px; }
+    .welcome-title { font-size: 2.1rem; margin-bottom: 32px; }
+    .welcome-body { font-size: 1rem; }
+    .welcome-signature { font-size: 1.35rem !important; }
+  }
+
+  /* Star field in welcome section */
+  .welcome-star-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  /* Grass strands (hidden by CSS from scene) */
+  .grass-strands {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    pointer-events: none;
+  }
+  .grass-blade {
+    position: absolute;
+    bottom: 0;
+    width: 3px;
+    background: var(--nebula-dark);
+    border-radius: 50% 50% 0 0;
+    transform-origin: bottom center;
+    animation: sway 4s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .sun { display: none; }
+  .cloud { display: none; }
+  .hill { display: none; }
+
+</style>
+</head>
+<body>
+
+<div class="counter">
+  <span id="found-count">0</span> / 25 found
+</div>
+
+<!-- FLOATING SITE NAV -->
+<nav class="site-nav" id="site-nav" aria-label="Site navigation">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-list" id="nav-list">
+    <li><a href="#letter" class="nav-link" data-section="letter">letter</a></li>
+    <li><a href="#scene" class="nav-link" data-section="scene">galaxy</a></li>
+    <li><a href="#plant" class="nav-link" data-section="plant">constellation</a></li>
+  </ul>
+</nav>
+
+<!-- WELCOME SECTION -->
+<section class="welcome-section" id="letter">
+  <div class="welcome-star-bg" id="welcome-star-bg"></div>
+  <div class="welcome-content">
+    <span class="welcome-pill"><span class="pill-icon">✦</span> a letter, for our 4th year</span>
+
+    <h1 class="welcome-title">
+      a small galaxy,<br>
+      <span class="title-soft">built for <em>you</em>.</span>
+    </h1>
+
+    <div class="welcome-body">
+      <p>I made this for you — a small, quiet place hidden in a corner of the internet, full of soft light for the heavy days.</p>
+
+      <p>Four years ago, I didn't know loving someone could feel this much like coming home. I don't know if you'll be able to find me again, or if you'll ever need to come back to this. But I wanted to plant something for you anyway: <em>twenty-five stars, and twenty-five little notes</em> — small things, all saying the same thing in different ways.</p>
+
+      <p>So even if you only find this once, you'll have something to remember. The stars will still be here, quietly, waiting. They were always for you.</p>
+
+      <p class="welcome-signature">— with all of me, four years in, A.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALAXY SCENE -->
+<section class="scene" id="scene">
+  <!-- Top nav -->
+  <div class="top-nav">
+    <div class="logo-splat"><span class="heart">♡</span>for you</div>
+    <div class="nav-line"></div>
+    <div class="sun-icon" aria-hidden="true">
+      <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="11" fill="#ffd54a"/>
+        <g stroke="#ffd54a" stroke-width="3" stroke-linecap="round" fill="none">
+          <line x1="30" y1="4" x2="30" y2="12"/>
+          <line x1="30" y1="48" x2="30" y2="56"/>
+          <line x1="4" y1="30" x2="12" y2="30"/>
+          <line x1="48" y1="30" x2="56" y2="30"/>
+          <line x1="11" y1="11" x2="17" y2="17"/>
+          <line x1="43" y1="43" x2="49" y2="49"/>
+          <line x1="11" y1="49" x2="17" y2="43"/>
+          <line x1="43" y1="17" x2="49" y2="11"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hero overlay -->
+  <div class="hero-overlay">
+    <h1 class="hero-title">
+      <span class="title-line">a galaxy</span>
+      <span class="title-line title-line-2">for you</span>
+    </h1>
+    <div class="click-hint" aria-hidden="true">
+      <span class="click-hint-arrow">↓</span>
+      <span class="click-hint-text">tap each star — every one is hiding a small message</span>
+    </div>
+  </div>
+
+  <!-- Corner annotations -->
+  <div class="annotation annot-tl">you are <span class="underline">loved</span></div>
+  <div class="annotation annot-tr">four years, <span class="underline">infinite more</span></div>
+
+  <!-- Ambient stars -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Galaxy Observatory Station -->
+  <div class="station">
+    <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground platform -->
+      <rect x="0" y="155" width="280" height="18" fill="#3a3268"/>
+      <rect x="0" y="153" width="280" height="3" fill="#2a2454"/>
+
+      <!-- Main observatory building -->
+      <rect x="55" y="80" width="115" height="78" fill="#1e1a48" stroke="#6a5aaa" stroke-width="1.5"/>
+      <!-- Side wing left -->
+      <rect x="25" y="100" width="34" height="58" fill="#1a1640" stroke="#5a4a9a" stroke-width="1"/>
+      <!-- Side wing right -->
+      <rect x="166" y="100" width="34" height="58" fill="#1a1640" stroke="#5a4a9a" stroke-width="1"/>
+
+      <!-- Dome base ring -->
+      <rect x="70" y="72" width="86" height="12" rx="3" fill="#2d2870" stroke="#7a6aba" stroke-width="1.2"/>
+
+      <!-- Observatory dome -->
+      <defs>
+        <radialGradient id="dome-grad" cx="42%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#6a60c4"/>
+          <stop offset="45%" stop-color="#3a3480"/>
+          <stop offset="100%" stop-color="#1a1850"/>
+        </radialGradient>
+        <radialGradient id="dome-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#a090ff" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#a090ff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="113" cy="73" rx="43" ry="42" fill="url(#dome-grad)" stroke="#7a6aba" stroke-width="1.5"/>
+      <ellipse cx="113" cy="73" rx="43" ry="42" fill="url(#dome-glow)"/>
+
+      <!-- Dome slit (open for telescope) -->
+      <path d="M 113 31 L 113 72 L 127 72 L 127 35 Q 120 30, 113 31 Z" fill="#080620" opacity="0.85"/>
+      <line x1="113" y1="32" x2="113" y2="72" stroke="#9080d0" stroke-width="1" opacity="0.7"/>
+
+      <!-- Dome highlight -->
+      <ellipse cx="97" cy="50" rx="10" ry="16" fill="#ffffff" opacity="0.06" transform="rotate(-20 97 50)"/>
+
+      <!-- Telescope barrel poking out of slit -->
+      <rect x="115" y="34" width="8" height="26" rx="3" fill="#d0c8f8" stroke="#8070c0" stroke-width="0.8"/>
+      <rect x="114" y="33" width="10" height="4" rx="1" fill="#b0a8e8" stroke="#6060a0" stroke-width="0.5"/>
+      <!-- Lens ring -->
+      <ellipse cx="119" cy="33" rx="4.5" ry="2" fill="#ffd54a" opacity="0.8"/>
+
+      <!-- Telescope light beam -->
+      <path d="M 119 33 L 90 0 L 95 0 Z" fill="url(#beam-grad)" opacity="0.35"/>
+      <defs>
+        <linearGradient id="beam-grad" x1="0%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#ffd54a" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ffd54a" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Stars being observed (little sparkles near beam) -->
+      <circle cx="92" cy="8" r="1.5" fill="#ffd54a" opacity="0.9"/>
+      <circle cx="86" cy="15" r="1" fill="#fff" opacity="0.7"/>
+      <circle cx="100" cy="5" r="0.8" fill="#fff" opacity="0.6"/>
+      <circle cx="78" cy="20" r="1.2" fill="#ffd54a" opacity="0.5"/>
+
+      <!-- Windows on main building -->
+      <rect x="70" y="100" width="22" height="16" rx="2" fill="#3a5080" stroke="#5a70a0" stroke-width="0.8"/>
+      <line x1="81" y1="100" x2="81" y2="116" stroke="#5a70a0" stroke-width="0.5"/>
+      <line x1="70" y1="108" x2="92" y2="108" stroke="#5a70a0" stroke-width="0.5"/>
+      <rect x="133" y="100" width="22" height="16" rx="2" fill="#3a5080" stroke="#5a70a0" stroke-width="0.8"/>
+      <line x1="144" y1="100" x2="144" y2="116" stroke="#5a70a0" stroke-width="0.5"/>
+      <line x1="133" y1="108" x2="155" y2="108" stroke="#5a70a0" stroke-width="0.5"/>
+
+      <!-- Door -->
+      <rect x="103" y="122" width="20" height="36" rx="2" fill="#0c0a20" stroke="#5a4a9a" stroke-width="0.8"/>
+      <!-- Door arch top -->
+      <path d="M 103 128 Q 103 122, 113 122 Q 123 122, 123 128" fill="#0c0a20" stroke="#5a4a9a" stroke-width="0.8"/>
+      <circle cx="119" cy="140" r="1" fill="#ffd54a"/>
+
+      <!-- Side wing windows (porthole style) -->
+      <circle cx="42" cy="120" r="7" fill="#2a3060" stroke="#5a4a9a" stroke-width="0.8"/>
+      <circle cx="42" cy="120" r="4" fill="#3a5080"/>
+      <circle cx="183" cy="120" r="7" fill="#2a3060" stroke="#5a4a9a" stroke-width="0.8"/>
+      <circle cx="183" cy="120" r="4" fill="#3a5080"/>
+
+      <!-- Satellite dish on roof -->
+      <line x1="35" y1="100" x2="35" y2="80" stroke="#4a4080" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 26 80 Q 35 68, 44 80" fill="none" stroke="#8080d0" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="35" cy="80" r="2" fill="#ffd54a"/>
+
+      <!-- Antenna on other side -->
+      <line x1="200" y1="100" x2="200" y2="75" stroke="#4a4080" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="200" cy="74" r="2.5" fill="#ffd54a"/>
+      <circle cx="200" cy="74" r="1" fill="#fff"/>
+
+      <!-- Observatory sign -->
+      <rect x="88" y="88" width="50" height="10" rx="1.5" fill="#fff" stroke="#5a4a9a" stroke-width="0.6"/>
+      <text x="113" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" font-weight="700" fill="#2a2070">GALAXY OBS.</text>
+
+      <!-- Ground accent lights -->
+      <circle cx="55" cy="156" r="2.5" fill="#ffd54a" opacity="0.8"/>
+      <circle cx="225" cy="156" r="2.5" fill="#ffd54a" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <!-- Rocket -->
+  <div class="train-container">
+    <svg viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="flame-grad" cx="50%" cy="0%" r="100%">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="25%" stop-color="#ffd54a"/>
+          <stop offset="65%" stop-color="#ff7a20"/>
+          <stop offset="100%" stop-color="#ff4a00" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="body-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#c8c0e8"/>
+          <stop offset="40%" stop-color="#f0ecff"/>
+          <stop offset="100%" stop-color="#a8a0d0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Flame exhaust (behind rocket) -->
+      <ellipse cx="28" cy="55" rx="22" ry="8" fill="url(#flame-grad)" opacity="0.9"/>
+      <ellipse cx="18" cy="55" rx="14" ry="5" fill="#ff9a30" opacity="0.6"/>
+      <ellipse cx="10" cy="55" rx="8" ry="3" fill="#fff5a0" opacity="0.5"/>
+
+      <!-- Main body -->
+      <rect x="30" y="35" width="100" height="40" rx="8" fill="url(#body-grad)" stroke="#9080c0" stroke-width="1.2"/>
+
+      <!-- Nose cone -->
+      <path d="M 130 35 Q 165 40, 168 55 Q 165 70, 130 75 Z" fill="#d8d0f8" stroke="#9080c0" stroke-width="1"/>
+      <path d="M 145 40 Q 162 48, 162 55 Q 162 62, 145 68" fill="none" stroke="#a090d0" stroke-width="0.6" opacity="0.6"/>
+
+      <!-- Fins -->
+      <path d="M 38 73 L 28 88 L 52 75 Z" fill="#7860c0" stroke="#5a4a9a" stroke-width="0.8"/>
+      <path d="M 38 37 L 28 22 L 52 35 Z" fill="#7860c0" stroke="#5a4a9a" stroke-width="0.8"/>
+
+      <!-- Color stripe band -->
+      <rect x="30" y="35" width="100" height="8" rx="4" fill="#7c6cd8" opacity="0.9"/>
+      <rect x="30" y="67" width="100" height="8" rx="4" fill="#7c6cd8" opacity="0.9"/>
+
+      <!-- Porthole windows -->
+      <circle cx="72" cy="55" r="10" fill="#1a1640" stroke="#a090d0" stroke-width="1.5"/>
+      <circle cx="72" cy="55" r="7" fill="#2a2060"/>
+      <circle cx="72" cy="55" r="4" fill="#3a3888"/>
+      <ellipse cx="69" cy="52" rx="2" ry="3" fill="#7070d0" opacity="0.5"/>
+
+      <circle cx="105" cy="55" r="8" fill="#1a1640" stroke="#a090d0" stroke-width="1.2"/>
+      <circle cx="105" cy="55" r="5" fill="#2a2060"/>
+      <ellipse cx="103" cy="53" rx="1.5" ry="2" fill="#7070d0" opacity="0.4"/>
+
+      <!-- Rocket text -->
+      <text x="78" y="49" text-anchor="middle" font-family="Inter, sans-serif" font-size="5.5" font-weight="700" fill="#9080d0" opacity="0.8">STARBOUND</text>
+      <text x="78" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="5" font-weight="600" fill="#9080d0" opacity="0.6">VOYAGER I</text>
+
+      <!-- Engine nozzles -->
+      <ellipse cx="35" cy="45" rx="5" ry="8" fill="#5a4a8a" stroke="#3a2a6a" stroke-width="0.8"/>
+      <ellipse cx="35" cy="65" rx="5" ry="8" fill="#5a4a8a" stroke="#3a2a6a" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <!-- Grass strands (decorative) -->
+  <div class="grass-strands" id="grass"></div>
+
+  <!-- Star field (clickable) -->
+  <div class="daisy-field" id="daisyField"></div>
+
+  <!-- Blue Cat -->
+  <div class="cat-container">
+    <svg viewBox="0 0 130 110" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="65" cy="100" rx="42" ry="4" fill="rgba(0,0,0,0.18)"/>
+      <g class="cat-body">
+        <!-- Tail -->
+        <path class="cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#4a8ec8" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <path class="cat-tail" d="M 30 75 Q 8 55, 18 35 Q 22 28, 30 32" stroke="#2a5e9a" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4"/>
+
+        <!-- Body -->
+        <ellipse cx="68" cy="75" rx="42" ry="28" fill="#4a90d0"/>
+        <ellipse cx="68" cy="80" rx="34" ry="20" fill="#6ab8f0" opacity="0.4"/>
+
+        <!-- Belly markings -->
+        <ellipse cx="68" cy="78" rx="22" ry="14" fill="#82caf5" opacity="0.55"/>
+
+        <!-- Body detail lines -->
+        <path d="M 45 60 Q 50 55, 55 60" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 70 58 Q 75 53, 80 58" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 90 65 Q 95 60, 100 65" stroke="#2a6aaa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+
+        <!-- Paws -->
+        <ellipse cx="50" cy="98" rx="7" ry="6" fill="#4a90d0"/>
+        <ellipse cx="68" cy="100" rx="7" ry="6" fill="#4a90d0"/>
+        <ellipse cx="86" cy="98" rx="7" ry="6" fill="#4a90d0"/>
+        <ellipse cx="50" cy="100" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
+        <ellipse cx="68" cy="102" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
+        <ellipse cx="86" cy="100" rx="5" ry="3" fill="#82caf5" opacity="0.7"/>
+
+        <!-- Head -->
+        <circle cx="95" cy="52" r="24" fill="#4a90d0"/>
+        <circle cx="95" cy="52" r="22" fill="#5aaae8" opacity="0.6"/>
+
+        <!-- Ears -->
+        <path d="M 82 32 L 75 18 L 90 28 Z" fill="#4a90d0" stroke="#2a6aaa" stroke-width="1"/>
+        <path d="M 108 32 L 115 18 L 100 28 Z" fill="#4a90d0" stroke="#2a6aaa" stroke-width="1"/>
+        <path d="M 83 30 L 78 22 L 88 29 Z" fill="#82caf5"/>
+        <path d="M 107 30 L 112 22 L 102 29 Z" fill="#82caf5"/>
+
+        <!-- Face -->
+        <!-- Eyes (bright teal) -->
+        <ellipse cx="87" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
+        <ellipse cx="103" cy="50" rx="5.5" ry="5.5" fill="#ffffff"/>
+        <circle cx="87" cy="51" r="3.5" fill="#20c070"/>
+        <circle cx="103" cy="51" r="3.5" fill="#20c070"/>
+        <circle cx="87" cy="51" r="2" fill="#0a1a10"/>
+        <circle cx="103" cy="51" r="2" fill="#0a1a10"/>
+        <circle cx="88.5" cy="49.5" r="0.9" fill="#ffffff"/>
+        <circle cx="104.5" cy="49.5" r="0.9" fill="#ffffff"/>
+
+        <!-- Nose -->
+        <path d="M 94 57 L 96 57 L 95 59 Z" fill="#1a70c0"/>
+
+        <!-- Whiskers -->
+        <line x1="72" y1="57" x2="90" y2="58" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
+        <line x1="72" y1="60" x2="90" y2="60" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
+        <line x1="100" y1="58" x2="118" y2="57" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
+        <line x1="100" y1="60" x2="118" y2="60" stroke="#2a5a90" stroke-width="0.8" opacity="0.7"/>
+
+        <!-- Mouth -->
+        <path d="M 95 59 Q 93 63, 91 61" stroke="#1a50a0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M 95 59 Q 97 63, 99 61" stroke="#1a50a0" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+        <!-- Cheeks -->
+        <ellipse cx="85" cy="58" rx="5" ry="3" fill="#7ab8e8" opacity="0.4"/>
+        <ellipse cx="104" cy="58" rx="5" ry="3" fill="#7ab8e8" opacity="0.4"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Satellite character -->
+  <div class="skater-container">
+    <svg viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="45" cy="125" rx="28" ry="2.5" fill="rgba(0,0,0,0.18)"/>
+      <g class="skater-body">
+        <rect x="18" y="115" width="54" height="5" rx="2" fill="#3a2e5e"/>
+        <rect x="18" y="115" width="54" height="2" rx="1" fill="#5e4a96"/>
+        <circle class="skateboard-wheel" cx="26" cy="122" r="3" fill="#fff8c8" stroke="#2e2350" stroke-width="0.8"/>
+        <circle class="skateboard-wheel" cx="64" cy="122" r="3" fill="#fff8c8" stroke="#2e2350" stroke-width="0.8"/>
+        <circle cx="26" cy="122" r="0.8" fill="#2e2350"/>
+        <circle cx="64" cy="122" r="0.8" fill="#2e2350"/>
+        <rect x="36" y="80" width="7" height="38" rx="2" fill="#5e6bb1"/>
+        <rect x="46" y="80" width="7" height="38" rx="2" fill="#5e6bb1"/>
+        <rect x="36" y="112" width="7" height="4" fill="#475290"/>
+        <rect x="46" y="112" width="7" height="4" fill="#475290"/>
+        <ellipse cx="39.5" cy="116" rx="6" ry="2.5" fill="#fff"/>
+        <ellipse cx="49.5" cy="116" rx="6" ry="2.5" fill="#fff"/>
+        <path d="M 28 55 Q 28 50, 33 48 L 56 48 Q 61 50, 61 55 L 62 74 L 26 74 Z" fill="#3eb5c8"/>
+        <path d="M 28 55 Q 28 50, 33 48 L 44 48 L 44 74 L 26 74 Z" fill="rgba(0,0,0,0.10)"/>
+        <path d="M 26 74 L 62 74 L 63 82 Q 63 86, 59 86 L 30 86 Q 26 86, 26 82 Z" fill="#f0e0c4"/>
+        <rect x="26" y="73" width="37" height="1.5" fill="#ffffff"/>
+        <rect x="43" y="48" width="2.2" height="26" fill="#ffd54a"/>
+        <rect x="43" y="74" width="2.2" height="12" fill="#e8b820"/>
+        <path d="M 33 48 L 56 48 L 54 53 L 35 53 Z" fill="#2f8f9f"/>
+        <rect x="22" y="55" width="7" height="28" rx="3" fill="#3eb5c8"/>
+        <rect x="22" y="58" width="7" height="3.5" fill="#ffd54a"/>
+        <rect x="60" y="55" width="7" height="28" rx="3" fill="#3eb5c8"/>
+        <rect x="60" y="58" width="7" height="3.5" fill="#ffd54a"/>
+        <circle cx="25.5" cy="84" r="3.5" fill="#f4c8a0"/>
+        <circle cx="63.5" cy="84" r="3.5" fill="#f4c8a0"/>
+        <circle cx="44" cy="36" r="14" fill="#f4c8a0"/>
+        <path d="M 30 32 Q 30 22, 44 20 Q 58 22, 58 32 L 58 40 Q 56 36, 52 35 L 36 35 Q 32 36, 30 40 Z" fill="#6b4423"/>
+        <path d="M 30 35 Q 28 42, 30 48" fill="none" stroke="#6b4423" stroke-width="3" stroke-linecap="round"/>
+        <path d="M 33 26 Q 38 22, 44 24 Q 50 22, 55 26 Q 50 28, 44 27 Q 38 28, 33 26 Z" fill="#6b4423"/>
+        <path d="M 28 38 Q 28 18, 44 16 Q 60 18, 60 38" stroke="#2a2a2a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse cx="28" cy="40" rx="5" ry="6.5" fill="#2a2a2a"/>
+        <ellipse cx="60" cy="40" rx="5" ry="6.5" fill="#2a2a2a"/>
+        <ellipse cx="28" cy="40" rx="3.5" ry="5" fill="#3a3a3a"/>
+        <ellipse cx="60" cy="40" rx="3.5" ry="5" fill="#3a3a3a"/>
+        <circle cx="40" cy="38" r="1" fill="#3a2418"/>
+        <circle cx="48" cy="38" r="1" fill="#3a2418"/>
+        <ellipse cx="38" cy="42" rx="2" ry="1.2" fill="#ffb0a5" opacity="0.6"/>
+        <ellipse cx="50" cy="42" rx="2" ry="1.2" fill="#ffb0a5" opacity="0.6"/>
+        <path d="M 41 43 Q 44 45, 47 43" stroke="#3a2418" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Boombox -->
+  <div class="boombox">
+    <svg viewBox="0 0 70 50" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="35" cy="48" rx="28" ry="2" fill="rgba(0,0,0,0.18)"/>
+      <path d="M 22 12 Q 22 6, 35 6 Q 48 6, 48 12" stroke="#2e2350" stroke-width="2" fill="none"/>
+      <rect x="6" y="12" width="58" height="34" rx="4" fill="#ffd54a" stroke="#c49a18" stroke-width="1.2"/>
+      <rect x="6" y="12" width="58" height="6" fill="#f0b830"/>
+      <rect x="6" y="42" width="58" height="4" fill="#c49a18"/>
+      <circle class="speaker" cx="18" cy="30" r="9" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="0.8"/>
+      <circle cx="18" cy="30" r="6" fill="#3a3a3a"/>
+      <circle cx="18" cy="30" r="3" fill="#5a5a5a"/>
+      <circle cx="18" cy="30" r="1.2" fill="#2a2a2a"/>
+      <circle class="speaker" cx="52" cy="30" r="9" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="0.8"/>
+      <circle cx="52" cy="30" r="6" fill="#3a3a3a"/>
+      <circle cx="52" cy="30" r="3" fill="#5a5a5a"/>
+      <circle cx="52" cy="30" r="1.2" fill="#2a2a2a"/>
+      <rect x="29" y="22" width="12" height="8" rx="1" fill="#1a1a1a"/>
+      <rect x="30" y="23" width="10" height="2" fill="#5dc4d8"/>
+      <line x1="60" y1="12" x2="66" y2="2" stroke="#2e2350" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="66" cy="2" r="1" fill="#2e2350"/>
+    </svg>
+  </div>
+
+  <!-- Floating music notes -->
+  <div id="notesContainer" style="position:absolute;inset:0;pointer-events:none;z-index:5;overflow:hidden;"></div>
+</section>
+
+<!-- DARK NOTE SECTION -->
+<section class="content-section" id="note">
+  <div class="content-wrapper">
+    <div class="section-label">a little note</div>
+    <h2 class="content-heading">
+      this galaxy was made <span class="scribble">with care</span>. every star is <span class="underline">a small message</span> about why you are <span class="underline">irreplaceable</span>.
+    </h2>
+    <div class="content-grid">
+      <ul class="content-list">
+        <li>you make the people you love feel safer just by being there</li>
+        <li>the world is warmer, gentler, and kinder because you exist in it</li>
+        <li>you have already survived every hard day so far — every single one</li>
+        <li>your softness is a rare and quiet kind of strength</li>
+        <li>there are people you haven't met yet who will need you</li>
+        <li>four years in, the very best version of us is still becoming, and it's worth staying for</li>
+      </ul>
+      <div class="content-right" id="song">
+        <p class="content-tagline">
+          play the song, let the stars come out, and know that <em>you are loved</em> — always.
+        </p>
+        <div class="music-card">
+          <span class="music-label">— a song to play while you wander —</span>
+          <iframe
+            src="https://open.spotify.com/embed/track/6dOtVTDdiauQNBQEDOtlAB?utm_source=generator"
+            width="100%" height="80" frameborder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTELLATION GAME SECTION -->
+<section class="plant-section" id="plant">
+  <div class="plant-content">
+    <div class="plant-intro">
+      <span class="plant-label">✦ A GAME FOR YOU</span>
+      <h2 class="plant-title">connect the <em>stars</em>.</h2>
+      <p class="plant-subtitle">each star is waiting to be found. connect them in order — follow the numbered path — and together they'll form something made just for you.</p>
+    </div>
+
+    <p class="constellation-hint">tap the stars <span>in order (1 → 12)</span> to draw the constellation</p>
+
+    <div class="constellation-wrap">
+      <canvas id="constellation-canvas" width="800" height="500"></canvas>
+    </div>
+
+    <button class="constellation-reset" id="constellation-reset">↺ reset constellation</button>
+  </div>
+</section>
+
+<!-- CONGRATULATIONS OVERLAY -->
+<div class="congrats-overlay" id="congrats-overlay">
+  <div class="congrats-inner" id="congrats-inner">
+    <div class="congrats-number">4</div>
+    <div class="congrats-text">happy 4th anniversary ✦</div>
+    <div class="congrats-sub">four years of you, four years of us, four years of home.</div>
+    <button class="congrats-close" id="congrats-close">with love, always ♡</button>
+  </div>
+</div>
+
+<!-- MESSAGE OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="message-card" id="messageCard">
+    <div class="daisy-icon">
+      <svg viewBox="0 0 50 50" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(25,25)">
+          <path d="M 0 -19 L 5 -6 L 19 -4 L 9 5 L 11 19 L 0 11 L -11 19 L -9 5 L -19 -4 L -5 -6 Z"
+                fill="#fdf3d0" stroke="#d9a23a" stroke-width="0.8"/>
+          <circle r="3.5" fill="#fff8e0"/>
+        </g>
+      </svg>
+    </div>
+    <div class="message-num" id="messageNum">Message #1</div>
+    <p class="message-text" id="messageText">—</p>
+    <div class="actions">
+      <button class="btn btn-primary" id="anotherBtn">Another star ✦</button>
+      <button class="btn btn-ghost" id="closeBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-body">
+    <div class="footer-finale">
+      <div class="footer-script">for you, four years and counting</div>
+      <div class="footer-divider"></div>
+      <div class="footer-meta">made with love, by A</div>
+    </div>
+  </div>
+  <div class="footer-landscape">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <rect width="1200" height="200" fill="#0c0a26"/>
+      <path d="M 0 80 Q 200 50, 400 70 Q 600 85, 800 60 Q 1000 70, 1200 55 L 1200 200 L 0 200 Z" fill="#3d2f7a" opacity="0.5"/>
+      <path d="M 0 115 Q 250 95, 500 115 Q 750 130, 1000 105 Q 1100 100, 1200 115 L 1200 200 L 0 200 Z" fill="#2d2360"/>
+      <path d="M 0 155 Q 300 140, 600 152 Q 900 165, 1200 145 L 1200 200 L 0 200 Z" fill="#080620"/>
+      <g fill="#ffd54a">
+        <g transform="translate(150, 175)"><path d="M 0 -6 L 1.6 -1.6 L 6 0 L 1.6 1.6 L 0 6 L -1.6 1.6 L -6 0 L -1.6 -1.6 Z"/></g>
+        <g transform="translate(480, 175)"><path d="M 0 -6 L 1.6 -1.6 L 6 0 L 1.6 1.6 L 0 6 L -1.6 1.6 L -6 0 L -1.6 -1.6 Z"/></g>
+        <g transform="translate(1000, 175)"><path d="M 0 -6 L 1.6 -1.6 L 6 0 L 1.6 1.6 L 0 6 L -1.6 1.6 L -6 0 L -1.6 -1.6 Z"/></g>
+      </g>
+    </svg>
+  </div>
+</footer>
+
+<script>
+// ===== 25 MESSAGES =====
+const messages = [
+  "Four years in, and your presence in this world is still a priceless gift.",
+  "Your smile can brighten the day of anyone who sees it, just like it did the day we met.",
+  "You are stronger than you think you are.",
+  "This world is a warmer place because you exist in it.",
+  "There isn't a single version of you that isn't worthy of love.",
+  "You are the answer to someone's quiet prayer — you have been mine for four years.",
+  "My days have become more meaningful since you came into them.",
+  "Your kindness touches more people than you'll ever realize.",
+  "You don't have to be perfect to be loved completely. You never have.",
+  "Your voice is still one of my favorite sounds in this whole world, four years later.",
+  "The way you care for others makes the world more beautiful.",
+  "Even on your hardest days, you are still precious.",
+  "You are living, breathing art.",
+  "Your laughter is my favorite music, and I never get tired of hearing it.",
+  "Nothing and no one could ever take your place in my heart — not after four years, not ever.",
+  "Every single time you choose to keep going, you win.",
+  "Your presence in my life is the most beautiful coincidence I have ever lived.",
+  "You are more loved than you have ever dared to imagine.",
+  "The world would lose so much of its color without you.",
+  "You make ordinary things feel extraordinary.",
+  "No matter how many times you fall, you always rise again.",
+  "Your gentleness is a strength, not a weakness.",
+  "You are home to so many hearts, and you have always been home to mine.",
+  "My best four years exist because of you.",
+  "And this last little message, which you may find at the very end: you are loved, always, unconditionally, for as many years as I have left to give. ✦"
+];
+
+// ===== STAR SVG =====
+function daisySVG(size = 36, colorVariation = 0) {
+  const centerColors = ['#ffd54a', '#ffe98a', '#fff0b0'];
+  const cc = centerColors[colorVariation % centerColors.length];
+  return `<svg width="${size}" height="${size}" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(25,25)">
+      <path d="M 0 -22 L 6 -7 L 22 -5 L 10 6 L 13 22 L 0 13 L -13 22 L -10 6 L -22 -5 L -6 -7 Z"
+            fill="#fdf3d0" stroke="#cda85a" stroke-width="0.6"/>
+      <circle r="5" fill="${cc}"/>
+      <circle r="2.4" fill="#fff8e0" opacity="0.9"/>
+    </g>
+  </svg>`;
+}
+
+// ===== PLACE STARS =====
+const field = document.getElementById('daisyField');
+const DAISY_COUNT = 25;
+const foundSet = new Set();
+const usedMessages = new Set();
+
+function placeDaisies() {
+  for (let i = 0; i < DAISY_COUNT; i++) {
+    const daisy = document.createElement('div');
+    daisy.className = 'daisy';
+    daisy.dataset.idx = i;
+    const left = Math.random() * 98 + '%';
+    const bottom = Math.random() * 80 + 2 + '%';
+    const sizeBase = 22 + Math.random() * 28;
+    const verticalDepth = parseFloat(bottom);
+    const depthScale = 0.7 + (1 - verticalDepth / 82) * 0.3;
+    const size = sizeBase * depthScale;
+    daisy.style.left = left;
+    daisy.style.bottom = bottom;
+    daisy.style.zIndex = Math.floor(verticalDepth);
+    daisy.style.animationDelay = (Math.random() * 4) + 's';
+    daisy.style.animationDuration = (4 + Math.random() * 3) + 's';
+    daisy.innerHTML = daisySVG(size, i % 3);
+    daisy.addEventListener('click', (e) => onDaisyClick(e, daisy, i));
+    field.appendChild(daisy);
+  }
+}
+
+function placeGrass() {
+  const grass = document.getElementById('grass');
+  for (let i = 0; i < 80; i++) {
+    const blade = document.createElement('div');
+    blade.className = 'grass-blade';
+    blade.style.left = Math.random() * 100 + '%';
+    blade.style.height = (8 + Math.random() * 22) + 'px';
+    blade.style.animationDelay = (Math.random() * 4) + 's';
+    blade.style.animationDuration = (3 + Math.random() * 3) + 's';
+    blade.style.opacity = 0.4 + Math.random() * 0.5;
+    grass.appendChild(blade);
+  }
+}
+
+function spawnSparkles(x, y) {
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.style.left = x + 'px';
+    s.style.top = y + 'px';
+    const angle = (Math.PI * 2 * i) / 8 + Math.random() * 0.3;
+    const dist = 30 + Math.random() * 30;
+    s.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+    s.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 900);
+  }
+}
+
+const overlay = document.getElementById('overlay');
+const messageText = document.getElementById('messageText');
+const messageNum = document.getElementById('messageNum');
+const foundCountEl = document.getElementById('found-count');
+
+function onDaisyClick(e, daisy, idx) {
+  daisy.classList.remove('popped');
+  void daisy.offsetWidth;
+  daisy.classList.add('popped');
+  const rect = daisy.getBoundingClientRect();
+  spawnSparkles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  if (!foundSet.has(idx)) {
+    foundSet.add(idx);
+    foundCountEl.textContent = foundSet.size;
+  }
+  let msgIdx;
+  if (usedMessages.size >= messages.length) {
+    msgIdx = Math.floor(Math.random() * messages.length);
+  } else {
+    do { msgIdx = Math.floor(Math.random() * messages.length); } while (usedMessages.has(msgIdx));
+    usedMessages.add(msgIdx);
+  }
+  messageText.textContent = messages[msgIdx];
+  messageNum.textContent = `Message #${msgIdx + 1} of ${messages.length}`;
+  overlay.classList.add('active');
+}
+
+document.getElementById('closeBtn').addEventListener('click', () => overlay.classList.remove('active'));
+document.getElementById('anotherBtn').addEventListener('click', () => {
+  const daisies = document.querySelectorAll('.daisy');
+  let candidates = Array.from(daisies).filter(d => !foundSet.has(parseInt(d.dataset.idx)));
+  if (candidates.length === 0) candidates = Array.from(daisies);
+  const target = candidates[Math.floor(Math.random() * candidates.length)];
+  overlay.classList.remove('active');
+  setTimeout(() => target.click(), 250);
+});
+overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('active'); });
+
+// ===== AMBIENT STARS =====
+function placeStars() {
+  const starsEl = document.getElementById('stars');
+  const starGlyphs = ['✦', '✧', '⋆', '✦', '✧'];
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = starGlyphs[i % starGlyphs.length];
+    s.style.left = Math.random() * 96 + '%';
+    s.style.top = Math.random() * 38 + '%';
+    s.style.fontSize = (7 + Math.random() * 8) + 'px';
+    s.style.animationDelay = (Math.random() * 4) + 's';
+    s.style.animationDuration = (3 + Math.random() * 3) + 's';
+    starsEl.appendChild(s);
+  }
+}
+
+// ===== MUSIC NOTES =====
+const noteGlyphs = ['♪', '♫', '♩', '♬', '♭'];
+const noteColors = ['#ffd54a', '#ffffff', '#ffe98a', '#d8d4f0', '#ffffff'];
+
+function spawnMusicNote(xPercent, yPercent, opts = {}) {
+  const container = document.getElementById('notesContainer');
+  if (!container) return;
+  const n = document.createElement('div');
+  n.className = 'note';
+  n.textContent = noteGlyphs[Math.floor(Math.random() * noteGlyphs.length)];
+  n.style.left = xPercent + '%';
+  n.style.top = yPercent + '%';
+  n.style.color = opts.color || noteColors[Math.floor(Math.random() * noteColors.length)];
+  n.style.fontSize = (opts.size || (14 + Math.random() * 8)) + 'px';
+  n.style.opacity = '0';
+  n.style.setProperty('--drift', (Math.random() * 60 - 30) + 'px');
+  n.style.animationDuration = (6 + Math.random() * 3) + 's';
+  container.appendChild(n);
+  setTimeout(() => n.remove(), 10000);
+}
+
+function ambientNotes() {
+  spawnMusicNote(8 + Math.random() * 84, 35 + Math.random() * 50, { size: 12 + Math.random() * 8 });
+}
+setInterval(ambientNotes, 2800);
+
+// ===== WELCOME STAR BG =====
+function buildWelcomeStars() {
+  const el = document.getElementById('welcome-star-bg');
+  if (!el) return;
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('width', '100%');
+  svg.setAttribute('height', '100%');
+  svg.style.position = 'absolute';
+  svg.style.inset = '0';
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElementNS(svgNS, 'circle');
+    c.setAttribute('cx', (Math.random() * 100) + '%');
+    c.setAttribute('cy', (Math.random() * 100) + '%');
+    c.setAttribute('r', (0.5 + Math.random() * 1.5).toFixed(2));
+    c.setAttribute('fill', '#ffffff');
+    c.setAttribute('opacity', (0.2 + Math.random() * 0.6).toFixed(2));
+    svg.appendChild(c);
+  }
+  el.appendChild(svg);
+}
+
+// ===== SITE NAV =====
+(function() {
+  const nav = document.getElementById('site-nav');
+  const toggle = document.getElementById('nav-toggle');
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  if (!nav || links.length === 0) return;
+  if (toggle) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    links.forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('open') && !nav.contains(e.target)) {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  const sectionIds = ['letter', 'scene', 'plant'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  if (sections.length && 'IntersectionObserver' in window) {
+    let activeId = null;
+    const visibleSections = new Set();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleSections.add(entry.target.id);
+        else visibleSections.delete(entry.target.id);
+      });
+      let nextActive = null;
+      for (const id of sectionIds) {
+        if (visibleSections.has(id)) { nextActive = id; break; }
+      }
+      if (nextActive && nextActive !== activeId) {
+        activeId = nextActive;
+        links.forEach(link => link.classList.toggle('active', link.dataset.section === activeId));
+      }
+    }, { rootMargin: '-30% 0px -50% 0px', threshold: 0 });
+    sections.forEach(s => observer.observe(s));
+  }
+})();
+
+// ===== CONSTELLATION GAME =====
+(function() {
+  const canvas = document.getElementById('constellation-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const congratsOverlay = document.getElementById('congrats-overlay');
+  const congratsInner = document.getElementById('congrats-inner');
+  const congratsClose = document.getElementById('congrats-close');
+  const resetBtn = document.getElementById('constellation-reset');
+
+  // Canvas logical size
+  const W = 800, H = 500;
+
+  // The '4' constellation: 12 star nodes forming a clear '4' shape
+  // Path: draw the vertical left stroke top-to-bottom, then the crossbar, then the vertical right stroke top-to-bottom
+  // Node positions are normalized 0-1 for responsive scaling
+  const nodes = [
+    // Left vertical stroke of '4' (nodes 0-4, top to bottom)
+    { x: 0.28, y: 0.12 },  // 1  — top-left
+    { x: 0.26, y: 0.28 },  // 2
+    { x: 0.25, y: 0.44 },  // 3
+    { x: 0.24, y: 0.58 },  // 4  — crossbar junction
+
+    // Crossbar right (nodes 4-6)
+    { x: 0.40, y: 0.58 },  // 5
+    { x: 0.55, y: 0.58 },  // 6
+    { x: 0.68, y: 0.58 },  // 7  — rightmost crossbar
+
+    // Right vertical stroke top (nodes 7-9, going up first then continuing down)
+    { x: 0.68, y: 0.42 },  // 8  — top of right stroke
+    { x: 0.67, y: 0.26 },  // 9
+    { x: 0.67, y: 0.12 },  // 10 — top right
+
+    // Right vertical stroke bottom (continuing from node 7 downward)
+    { x: 0.68, y: 0.70 },  // 11
+    { x: 0.68, y: 0.87 },  // 12 — bottom right
+  ];
+
+  // Connection order — the path the user must trace, 0-indexed
+  // 0→1→2→3 (left stroke down), 3→4→5→6 (crossbar right), 6→7→8→9 (back up right stroke), 9 then jump: from node 6 we continue down: 6→10→11
+  // Simpler: just sequential 0..11
+  const CONNECTION_ORDER = [0,1,2,3,4,5,6,7,8,9,6,10,11];
+  // This traces: left stroke down → crossbar → up right stroke → down right stroke
+  // Node 6 appears twice — that's the crossbar/right-stroke junction, user touches it twice
+
+  // State
+  let nextExpected = 0; // index into CONNECTION_ORDER
+  let connectedEdges = []; // array of [fromIdx, toIdx]
+  let litNodes = new Set();
+  let completed = false;
+  let pulsePhase = 0;
+
+  // DPR-aware canvas
+  function setupCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const w = rect.width || W;
+    const h = w * (H / W);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { w, h };
+  }
+
+  let dims = setupCanvas();
+
+  function nodePos(node) {
+    return { x: node.x * dims.w, y: node.y * dims.h };
+  }
+
+  function drawBackground() {
+    ctx.clearRect(0, 0, dims.w, dims.h);
+    // Space gradient
+    const grad = ctx.createRadialGradient(dims.w * 0.4, dims.h * 0.3, 0, dims.w * 0.5, dims.h * 0.5, dims.w * 0.8);
+    grad.addColorStop(0, '#1e1850');
+    grad.addColorStop(0.5, '#0f0c2a');
+    grad.addColorStop(1, '#06040f');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, dims.w, dims.h);
+
+    // Ambient background stars
+    const bgStars = [
+      [0.05,0.08,0.6],[0.12,0.22,0.4],[0.18,0.05,0.8],[0.33,0.18,0.5],
+      [0.42,0.08,0.7],[0.52,0.20,0.4],[0.62,0.10,0.6],[0.75,0.08,0.8],
+      [0.85,0.18,0.5],[0.92,0.06,0.7],[0.08,0.38,0.4],[0.15,0.68,0.5],
+      [0.38,0.78,0.6],[0.48,0.88,0.4],[0.58,0.82,0.7],[0.78,0.78,0.5],
+      [0.88,0.72,0.6],[0.92,0.88,0.4],[0.22,0.90,0.5],[0.72,0.90,0.6],
+      [0.05,0.95,0.4],[0.95,0.45,0.5],[0.10,0.52,0.3],[0.90,0.55,0.3],
+    ];
+    bgStars.forEach(([nx, ny, op]) => {
+      ctx.beginPath();
+      ctx.arc(nx * dims.w, ny * dims.h, 0.9, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${op})`;
+      ctx.fill();
+    });
+  }
+
+  function drawEdges() {
+    connectedEdges.forEach(([a, b], i) => {
+      const pa = nodePos(nodes[a]);
+      const pb = nodePos(nodes[b]);
+      // Glow pass
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(pa.x, pa.y);
+      ctx.lineTo(pb.x, pb.y);
+      ctx.strokeStyle = 'rgba(255,213,74,0.18)';
+      ctx.lineWidth = 8;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+      // Core line
+      ctx.beginPath();
+      ctx.moveTo(pa.x, pa.y);
+      ctx.lineTo(pb.x, pb.y);
+      const progress = i / Math.max(connectedEdges.length - 1, 1);
+      const r = Math.round(255);
+      const g = Math.round(170 + progress * 60);
+      const b2 = Math.round(40 + progress * 30);
+      ctx.strokeStyle = `rgba(${r},${g},${b2},0.9)`;
+      ctx.lineWidth = 2.2;
+      ctx.stroke();
+      ctx.restore();
+    });
+  }
+
+  function drawNodes() {
+    nodes.forEach((node, i) => {
+      const p = nodePos(node);
+      const isLit = litNodes.has(i);
+      const orderIdx = CONNECTION_ORDER.indexOf(i);
+      const expectedNode = CONNECTION_ORDER[nextExpected];
+      const isNext = !completed && i === expectedNode;
+
+      // Outer glow for next expected
+      if (isNext) {
+        ctx.save();
+        const pulse = 0.55 + 0.45 * Math.sin(pulsePhase);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 20 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,213,74,${0.15 * pulse})`;
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 13 * pulse, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,213,74,${0.25 * pulse})`;
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Star body
+      ctx.save();
+      drawStarShape(ctx, p.x, p.y, isLit ? 9 : 7, isLit, isNext);
+      ctx.restore();
+
+      // Number label
+      ctx.save();
+      ctx.font = `bold ${isLit ? 10 : 9}px Inter, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = isLit ? '#ffd54a' : 'rgba(255,255,255,0.45)';
+      // Show the step number in CONNECTION_ORDER (first occurrence, 1-indexed)
+      const stepNum = orderIdx + 1;
+      ctx.fillText(stepNum > 0 ? stepNum : '', p.x, p.y - 16);
+      ctx.restore();
+    });
+  }
+
+  function drawStarShape(ctx, cx, cy, r, isLit, isNext) {
+    const spikes = 5;
+    const outer = r;
+    const inner = r * 0.45;
+    ctx.beginPath();
+    for (let j = 0; j < spikes * 2; j++) {
+      const angle = (j * Math.PI) / spikes - Math.PI / 2;
+      const rad = j % 2 === 0 ? outer : inner;
+      const x = cx + Math.cos(angle) * rad;
+      const y = cy + Math.sin(angle) * rad;
+      if (j === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    if (isLit) {
+      ctx.fillStyle = '#ffd54a';
+      ctx.shadowColor = 'rgba(255,213,74,0.8)';
+      ctx.shadowBlur = 12;
+    } else if (isNext) {
+      ctx.fillStyle = '#fff5c8';
+      ctx.shadowColor = 'rgba(255,245,200,0.6)';
+      ctx.shadowBlur = 8;
+    } else {
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.shadowBlur = 0;
+    }
+    ctx.fill();
+    ctx.strokeStyle = isLit ? 'rgba(255,220,100,0.7)' : (isNext ? 'rgba(255,245,200,0.8)' : 'rgba(255,255,255,0.2)');
+    ctx.lineWidth = isLit ? 1.2 : 0.8;
+    ctx.stroke();
+  }
+
+  function drawHintLabel() {
+    if (completed) return;
+    const nextNodeIdx = CONNECTION_ORDER[nextExpected];
+    const p = nodePos(nodes[nextNodeIdx]);
+    ctx.save();
+    ctx.font = '11px Caveat, cursive';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,220,100,0.7)';
+    ctx.fillText('tap me', p.x, p.y + 22);
+    ctx.restore();
+  }
+
+  function draw() {
+    drawBackground();
+    drawEdges();
+    drawNodes();
+    if (!completed) drawHintLabel();
+  }
+
+  // Animation loop
+  let raf;
+  function animate() {
+    pulsePhase += 0.045;
+    draw();
+    raf = requestAnimationFrame(animate);
+  }
+  animate();
+
+  // Hit test
+  function hitTest(ex, ey) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = dims.w / rect.width;
+    const scaleY = dims.h / rect.height;
+    const mx = (ex - rect.left) * scaleX;
+    const my = (ey - rect.top) * scaleY;
+    let closest = -1, minDist = Infinity;
+    nodes.forEach((node, i) => {
+      const p = nodePos(node);
+      const d = Math.hypot(mx - p.x, my - p.y);
+      if (d < minDist) { minDist = d; closest = i; }
+    });
+    return minDist < 34 ? closest : -1;
+  }
+
+  function handleTap(ex, ey) {
+    if (completed) return;
+    const hit = hitTest(ex, ey);
+    if (hit === -1) return;
+    const expected = CONNECTION_ORDER[nextExpected];
+    if (hit !== expected) {
+      // Flash wrong indication
+      spawnSparklesCanvas(nodePos(nodes[hit]), '#ff5555');
+      return;
+    }
+
+    // Correct tap
+    litNodes.add(hit);
+    if (nextExpected > 0) {
+      const prevNode = CONNECTION_ORDER[nextExpected - 1];
+      connectedEdges.push([prevNode, hit]);
+    }
+    spawnSparklesCanvas(nodePos(nodes[hit]), '#ffd54a');
+    nextExpected++;
+
+    if (nextExpected >= CONNECTION_ORDER.length) {
+      completed = true;
+      setTimeout(showCongrats, 700);
+    }
+  }
+
+  function spawnSparklesCanvas(pos, color) {
+    // CSS sparkles on body
+    for (let i = 0; i < 6; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = rect.width / dims.w;
+      const scaleY = rect.height / dims.h;
+      s.style.left = (rect.left + pos.x * scaleX) + 'px';
+      s.style.top = (rect.top + pos.y * scaleY + window.scrollY) + 'px';
+      s.style.position = 'absolute';
+      s.style.background = color === '#ffd54a'
+        ? 'radial-gradient(circle, #fff5d8 0%, #d9a23a 60%, transparent 100%)'
+        : 'radial-gradient(circle, #ffaaaa 0%, #ff4444 60%, transparent 100%)';
+      const angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.5;
+      const dist = 24 + Math.random() * 22;
+      s.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      s.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 900);
+    }
+  }
+
+  // Event listeners
+  canvas.addEventListener('click', (e) => handleTap(e.clientX, e.clientY));
+  canvas.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    const t = e.touches[0];
+    handleTap(t.clientX, t.clientY);
+  }, { passive: false });
+
+  // Resize
+  window.addEventListener('resize', () => {
+    dims = setupCanvas();
+  });
+
+  // Reset
+  resetBtn.addEventListener('click', () => {
+    nextExpected = 0;
+    connectedEdges = [];
+    litNodes = new Set();
+    completed = false;
+  });
+
+  // Congrats
+  function showCongrats() {
+    congratsOverlay.classList.add('show');
+    spawnBurstParticles();
+  }
+
+  function spawnBurstParticles() {
+    if (!congratsInner) return;
+    const colors = ['#ffd54a', '#ffe98a', '#ffffff', '#ffb8c8', '#a090ff', '#80d8ff'];
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'burst-particle';
+      const angle = (Math.PI * 2 * i) / 40 + Math.random() * 0.3;
+      const dist = 80 + Math.random() * 180;
+      p.style.left = '50%';
+      p.style.top = '50%';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.setProperty('--bx', Math.cos(angle) * dist + 'px');
+      p.style.setProperty('--by', Math.sin(angle) * dist + 'px');
+      p.style.animationDelay = (Math.random() * 0.4) + 's';
+      p.style.width = (4 + Math.random() * 8) + 'px';
+      p.style.height = (4 + Math.random() * 8) + 'px';
+      congratsInner.appendChild(p);
+      setTimeout(() => p.remove(), 1600);
+    }
+    // Repeat burst
+    setTimeout(spawnBurstParticles, 1800);
+  }
+
+  congratsClose.addEventListener('click', () => {
+    congratsOverlay.classList.remove('show');
+  });
+})();
+
+// ===== INIT =====
+placeGrass();
+placeStars();
+placeDaisies();
+buildWelcomeStars();
+for (let i = 0; i < 3; i++) setTimeout(() => ambientNotes(), i * 900);
+
+</script>
+</body>
+</html>
